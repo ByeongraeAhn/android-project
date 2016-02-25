@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/jee
+        http://www.springframework.org/schema/jee/spring-jee.xsd
+        http://mybatis.org/schema/mybatis-spring 
+        http://mybatis.org/schema/mybatis-spring.xsd">
+        
+
+	<context:component-scan base-package="com.ldcc.android">
+	   <context:exclude-filter type="regex" expression="com.ldcc.android.controller.*"/>
+	</context:component-scan>
+
+	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/andboarddb"/>
+
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="sqlSessionFactory" 
+	       class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="typeAliasesPackage" 
+		          value="com.ldcc.android.domain" />
+		<property name="mapperLocations" 
+		          value="classpath*:com/ldcc/android/dao/*Dao.xml" />
+	</bean>
+	
+  <mybatis:scan base-package="com.ldcc.android.dao" />
+  
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
