@@ -2,6 +2,8 @@ package com.ldcc.android.controller;
 
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,17 +34,16 @@ public class BoardController {
   
   //로그인
   @RequestMapping("/login")
-  public Object login(String out_data) throws Exception {
+  public Object login(/*String out_data*/ HttpServletRequest request) throws Exception {
     
     System.out.println("로그인 접속 성공");
-    System.out.println(out_data);
+    //System.out.println(out_data);
+    System.out.println(request.getParameter("out_data"));
     
-    Object jsonobject=JSONValue.parse(out_data);
+/*    Object jsonobject=JSONValue.parse(request.getParameter("out_data"));
     JSONObject jsonobj=(JSONObject)jsonobject;
     System.out.println(jsonobj.get("id"));
-    System.out.println(jsonobj.get("pwd"));
-    //String id = (String) jsonobj.get("id");
-    //String pwd = (String) jsonobj.get("pwd");
+    System.out.println(jsonobj.get("pwd"));*/
 
     HashMap<String,Object> responseData = new HashMap<String,Object>();
     responseData.put("status", "success");
