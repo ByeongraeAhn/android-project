@@ -34,16 +34,15 @@ public class BoardController {
   
   //로그인
   @RequestMapping("/login")
-  public Object login(/*String out_data*/ HttpServletRequest request) throws Exception {
+  public Object login(String responsePost) throws Exception {
     
     System.out.println("로그인 접속 성공");
-    //System.out.println(out_data);
-    System.out.println(request.getParameter("out_data"));
+    System.out.println(responsePost);
     
-/*    Object jsonobject=JSONValue.parse(request.getParameter("out_data"));
+    Object jsonobject=JSONValue.parse(responsePost);
     JSONObject jsonobj=(JSONObject)jsonobject;
     System.out.println(jsonobj.get("id"));
-    System.out.println(jsonobj.get("pwd"));*/
+    System.out.println(jsonobj.get("pwd"));
 
     HashMap<String,Object> responseData = new HashMap<String,Object>();
     responseData.put("status", "success");

@@ -18,8 +18,8 @@ function init() {
 }
 
 function login() {
-	var out_data = "{\"id\":\"xanbrx88\",\"pwd\":\"1234\"}";
-	$.ajax('http://' + ip + '/login.do?out_data=' + out_data, {
+	var responsePost = "{\"id\":\"xanbrx88\",\"pwd\":\"1234\"}";
+	$.ajax('http://' + ip + '/login.do?responsePost=' + responsePost, {
 		method: 'GET',
 		dataType: 'json',
 		success: function(result) {
