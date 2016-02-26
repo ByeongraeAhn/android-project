@@ -20,8 +20,8 @@ CREATE TABLE board (
 
 -- 회원테이블
 CREATE TABLE member (
-  mid    INTEGER      NOT NULL PRIMARY KEY,     -- 회원내부아이디
-  mname  VARCHAR(50)  NOT NULL,     -- 회원이름
+  mid    INTEGER      NOT NULL PRIMARY KEY AUTO_INCREMENT,     -- 회원내부아이디
+  mname  VARCHAR(50)  NOT NULL,     -- 회원아이디
   mpwd   VARCHAR(50)  NOT NULL,     -- 회원비밀번호
   mloc   VARCHAR(255) NOT NULL,     -- 회원주소
   mdate  DATE         NOT NULL,     -- 회원가입일
