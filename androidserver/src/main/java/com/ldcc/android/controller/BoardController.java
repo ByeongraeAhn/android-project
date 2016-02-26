@@ -39,10 +39,10 @@ public class BoardController {
     System.out.println("로그인 접속 성공");
     System.out.println(responsePost);
     
-    Object jsonobject=JSONValue.parse(responsePost);
+/*    Object jsonobject=JSONValue.parse(responsePost);
     JSONObject jsonobj=(JSONObject)jsonobject;
     System.out.println(jsonobj.get("id"));
-    System.out.println(jsonobj.get("pwd"));
+    System.out.println(jsonobj.get("pwd"));*/
 
     HashMap<String,Object> responseData = new HashMap<String,Object>();
     responseData.put("status", "success");
