@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS COMMENT RESTRICT;
 
 -- 게시물테이블
 CREATE TABLE BOARD (
-  BIDX      INTEGER      NOT NULL,     -- 게시물IDX
+  BIDX      INTEGER      NOT NULL PRIMARY KEY AUTO_INCREMENT,     -- 게시물IDX
   MID       INTEGER      NOT NULL,     -- 회원아이디
   BDATE     DATE         NOT NULL,     -- 게시물등록일
   BTITLE    VARCHAR(50)  NOT NULL,     -- 게시물제목
@@ -18,16 +18,9 @@ CREATE TABLE BOARD (
   BHITS     INTEGER      NULL          -- 조회수
 );
 
--- 게시물테이블
-ALTER TABLE BOARD
-  ADD CONSTRAINT PK_BOARD -- 게시물테이블 기본키
-    PRIMARY KEY (
-      BIDX -- 게시물IDX
-    );
-
 -- 회원테이블
 CREATE TABLE MEMBER (
-  MID    INTEGER      NOT NULL,     -- 회원아이디
+  MID    INTEGER      NOT NULL PRIMARY KEY,     -- 회원아이디
   MNAME  VARCHAR(50)  NOT NULL,     -- 회원이름
   MPWD   VARCHAR(50)  NOT NULL,     -- 회원비밀번호
   MLOC   VARCHAR(255) NOT NULL,     -- 회원주소
@@ -35,28 +28,14 @@ CREATE TABLE MEMBER (
   MGRADE INTEGER      NOT NULL      -- 회원등급
 );
 
--- 회원테이블
-ALTER TABLE MEMBER
-  ADD CONSTRAINT PK_MEMBER -- 회원테이블 기본키
-    PRIMARY KEY (
-      MID -- 회원아이디
-    );
-
 -- 댓글테이블
 CREATE TABLE COMMENT (
-  CIDX     INTEGER      NOT NULL,     -- 댓글IDX
+  CIDX     INTEGER      NOT NULL PRIMARY KEY AUTO_INCREMENT,     -- 댓글IDX
   MID      INTEGER      NOT NULL,     -- 회원아이디
   BIDX     INTEGER      NOT NULL,     -- 게시물IDX
   CCONTENT VARCHAR(255) NOT NULL,     -- 댓글내용
   CDATE    DATE         NOT NULL      -- 댓글등록일
 );
-
--- 댓글테이블
-ALTER TABLE COMMENT
-  ADD CONSTRAINT PK_COMMENT -- 댓글테이블 기본키
-    PRIMARY KEY (
-      CIDX -- 댓글IDX
-    );
 
 -- 게시물테이블
 ALTER TABLE BOARD
@@ -67,7 +46,7 @@ ALTER TABLE BOARD
     REFERENCES MEMBER ( -- 회원테이블
       MID -- 회원아이디
     )
-    ON DELETE CASCADE);
+    ON DELETE CASCADE;
 
 -- 댓글테이블
 ALTER TABLE COMMENT
@@ -78,7 +57,7 @@ ALTER TABLE COMMENT
     REFERENCES BOARD ( -- 게시물테이블
       BIDX -- 게시물IDX
     )
-    ON DELETE CASCADE);
+    ON DELETE CASCADE;
 
 -- 댓글테이블
 ALTER TABLE COMMENT
@@ -89,7 +68,7 @@ ALTER TABLE COMMENT
     REFERENCES MEMBER ( -- 회원테이블
       MID -- 회원아이디
     )
-    ON DELETE CASCADE);
+    ON DELETE CASCADE;
 
 
 
