@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ldcc.android.dao.MemberDao">
+
+
+	<!-- 회원 추가 -->
+	<insert id="insert" parameterType="MemberVo">
+		INSERT INTO member (MNAME,MPWD,MLOC,MDATE,MGRADE)
+		VALUES
+		(#{mname},#{mpwd},#{mloc},#{mdate},#{mgrade});
+	</insert>
+
+	<!-- 회원 전체 가져오기 -->
+	<select id="selectAll" resultType="MemberVo">
+		SELECT * FROM member
+	</select>
+
+	<!-- 회원 번호를 통해 하나만 가져오기 -->
+	<select id="selectOne" parameterType="java.lang.String" resultType="MemberVo">
+		SELECT * FROM member WHERE MID = #{mid};
+	</select>
+
+	<!-- 회원 삭제 -->
+	<delete id="delete" parameterType="java.lang.String">
+		DELETE FROM member WHERE MID = #{mid};
+	</delete>
+
+	<!-- 회원 수정 -->
+	<update id="update" parameterType="MemberVo">
+		UPDATE member set
+		BTITLE = #{btitle},
+		BCONTENT = #{bcontent},
+		RECOMMEND = #{recommend},
+		BHITS = #{bhits}
+		where MID = #{mid};
+	</update>
+
+</mapper>

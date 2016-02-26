@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ldcc.android.dao.CommentDao">
+
+
+
+	<!-- 답변 추가 -->
+	<insert id="insert" parameterType="CommentVo">
+		INSERT INTO comment (MID,BIDX,CCONTENT,CDATE)
+		VALUES
+		(#{mid},#{bidx},#{ccontent},#{cdate});
+	</insert>
+
+	<!-- 답변 전체 가져오기 -->
+	<select id="selectAll" resultType="CommentVo">
+		SELECT * FROM comment
+	</select>
+
+	<!-- 답변 번호를 통해 하나만 가져오기 -->
+	<select id="selectOne" parameterType="String" resultType="CommentVo">
+		SELECT * FROM comment WHERE CIDX = #{cidx};
+	</select>
+
+	<!-- 답변 삭제 -->
+	<delete id="delete" parameterType="String">
+		DELETE FROM comment WHERE CIDX = #{cidx};
+	</delete>
+
+	<!-- 답변 수정 -->
+	<update id="update" parameterType="CommentVo">
+		UPDATE comment set
+		BTITLE = #{btitle},
+		BCONTENT = #{bcontent},
+		RECOMMEND = #{recommend},
+		BHITS = #{bhits}
+		where CIDX = #{cidx};
+	</update>
+
+</mapper>
