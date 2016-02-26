@@ -4,51 +4,61 @@ import java.io.Serializable;
 import java.sql.Date;
 
 public class BoardVo implements Serializable{
-  private static final long serialVersionUID = 1L;
-  
-  protected int     no;
-  protected String  title;
-  protected String  content;
-  protected Date    createDate;
-  protected int     views;
-  protected String  password;
-  
-  public int getNo() {
-    return no;
-  }
-  public void setNo(int no) {
-    this.no = no;
-  }
-  public String getTitle() {
-    return title;
-  }
-  public void setTitle(String title) {
-    this.title = title;
-  }
-  public String getContent() {
-    return content;
-  }
-  public void setContent(String content) {
-    this.content = content;
-  }
-  public Date getCreateDate() {
-    return createDate;
-  }
-  public void setCreateDate(Date createDate) {
-    this.createDate = createDate;
-  }
-  public int getViews() {
-    return views;
-  }
-  public void setViews(int views) {
-    this.views = views;
-  }
-  public String getPassword() {
-    return password;
-  }
-  public void setPassword(String password) {
-    this.password = password;
-  }
-  
-  
+	private static final long serialVersionUID = 1L;
+	private int bidx;
+	private int mid;
+	private Date bdate;
+	private String btitle;
+	private String bcontent;
+	private int recommend;
+	private int bhits;
+
+	public BoardVo(){}
+
+	public int getBidx() {
+		return bidx;
+	}
+	public void setBidx(int bidx) {
+		this.bidx = bidx;
+	}
+	public int getMid() {
+		return mid;
+	}
+	public void setMid(int mid) {
+		this.mid = mid;
+	}
+	public Date getBdate() {
+		return bdate;
+	}
+	public void setBdate(Date bdate) {
+		this.bdate = bdate;
+	}
+	public String getBtitle() {
+		return btitle;
+	}
+	public void setBtitle(String btitle) {
+		this.btitle = btitle;
+	}
+	public String getBcontent() {
+		return bcontent;
+	}
+	public void setBcontent(String bcontent) {
+		this.bcontent = bcontent;
+	}
+	public int getRecommend() {
+		return recommend;
+	}
+	public void setRecommend(int recommend) {
+		this.recommend = recommend;
+	}
+	public int getBhits() {
+		return bhits;
+	}
+	public void setBhits(int bhits) {
+		this.bhits = bhits;
+	}
+
+
+
+
 }

@@ -2,12 +2,51 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ldcc.android.dao.BoardDao"> 
+<mapper namespace="com.ldcc.android.dao.BoardDao">
 
-	<!-- 회원 추가 -->
-	<insert id="insert" parameterType="BoardVo"> 
-		INSERT INTO user (id,password,address,join_date) 
-		VALUES (#{id},#{password},#{address},#{join_date})      
+
+	<!-- 글 결과 매핑 -->
+	<resultMap type="BoardVo" id="BoardVoResultMap">
+		<result property="bidx" column="BIDX" />
+		<result property="mid" column="MID" />
+		<result property="bdate" column="BDATE" />
+		<result property="btitle" column="BTITLE" />
+		<result property="bcontent" column="BCONTENT" />
+		<result property="recommend" column="RECOMMEND" />
+		<result property="bhits" column="BHITS" />
+	</resultMap>
+
+
+	<!-- 글 추가 -->
+	<insert id="insert" parameterType="BoardVo">
+		INSERT INTO board (MID,BDATE,BTITLE,BCONTENT,RECOMMEND,BHITS)
+		VALUES
+		(#{mid},#{bdate},#{btitle},#{bcontent},#{recommend},#{bhits});
 	</insert>
+
+	<!-- 글 전체 가져오기 -->
+	<select id="selectAll" resultMap="BoardVoResultMap">
+		SELECT * FROM board
+	</select>
+
+	<!-- 글 번호를 통해 하나만 가져오기 -->
+	<select id="selectOne" parameterType="Integer" resultMap="BoardVoResultMap">
+		SELECT * FROM board WHERE BIDX = #{bidx};
+	</select>
+
+	<!-- 글 삭제 -->
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM board WHERE BIDX = #{bidx};
+	</delete>
+
+	<!-- 글 수정 -->
+	<update id="update" parameterType="BoardVo">
+		UPDATE board set
+		BTITLE = #{btitle},
+		BCONTENT = #{bcontent},
+		RECOMMEND = #{recommend},
+		BHITS = #{bhits}
+		where BIDX = #{bidx};
+	</update>
 
 </mapper>
