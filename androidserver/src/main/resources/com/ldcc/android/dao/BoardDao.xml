@@ -4,24 +4,36 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ldcc.android.dao.BoardDao">
 
+	<!-- 글 결과 매핑 -->
+	<resultMap type="BoardVo" id="BoardVoResultMap">
+		<result property="bidx" column="bidx" />
+		<result property="mid" column="mid" />
+		<result property="bdate" column="bdate" />
+		<result property="btitle" column="btitle" />
+		<result property="bcontent" column="bcontent" />
+		<result property="recommend" column="recommend" />
+		<result property="bhits" column="bhits" />
+		<collection property="comments" select="com.ldcc.android.dao.CommentDao.selectAllByBidx"
+			column="bidx" ofType="Comment"></collection>
+	</resultMap>
 
 	<!-- 글 추가 -->
 	<insert id="insert" parameterType="BoardVo">
-		INSERT 
-		INTO board 
-		  (mid
-		  ,bdate
-		  ,btitle
-		  ,bcontent
-		  ,recommend
-		  ,bhits)
+		INSERT
+		INTO board
+		(mid
+		,bdate
+		,btitle
+		,bcontent
+		,recommend
+		,bhits)
 		VALUES
-		  (#{mid}
-		  ,#{bdate}
-		  ,#{btitle}
-		  ,#{bcontent}
-		  ,#{recommend}
-		  ,#{bhits});
+		(#{mid}
+		,#{bdate}
+		,#{btitle}
+		,#{bcontent}
+		,#{recommend}
+		,#{bhits});
 	</insert>
 
 	<!-- 글 전체 가져오기 -->
@@ -30,29 +42,38 @@
 		FROM board
 	</select>
 
+	<!-- 글 갯수 가져오기 -->
+	<select id="countAll" resultType="Integer">
+		SELECT COUNT(*)
+		FROM board
+	</select>
+
 	<!-- 글 번호를 통해 하나만 가져오기 -->
-	<select id="selectOne" parameterType="Integer" resultType="BoardVo">
+	<select id="selectOne" parameterType="Integer" resultMap="BoardVoResultMap">
 		SELECT *
-		FROM board 
+		FROM board
 		WHERE bidx = #{bidx};
 	</select>
 
 	<!-- 글 삭제 -->
 	<delete id="delete" parameterType="Integer">
-		DELETE 
-		FROM board 
-		WHERE bidx = #{bidx};
+		DELETE
+		FROM board
+		WHERE bidx =
+		#{bidx};
 	</delete>
 
 	<!-- 글 수정 -->
 	<update id="update" parameterType="BoardVo">
-		UPDATE board 
+		UPDATE board
 		SET
-		  btitle    = #{btitle},
-		  bcontent  = #{bcontent},
-		  recommend = #{recommend},
-		  bhits     = #{bhits}
-		WHERE bidx  = #{bidx};
+		btitle =
+		#{btitle},
+		bcontent = #{bcontent},
+		recommend = #{recommend},
+		bhits =
+		#{bhits}
+		WHERE bidx = #{bidx};
 	</update>
 
 </mapper>
