@@ -60,22 +60,14 @@ public class MemberVo implements Serializable{
 		this.mdate = mdate;
 	}
 
-	public GRADE getMGrade() {
-		return GRADE.values()[this.mgrade];
-	}
-	
 	public int getMgrade() {
-		return this.mgrade;
+		return mgrade;
 	}
 
-	public void setMgrade(GRADE mgrade) {
-		this.mgrade = mgrade.ordinal();
-	};
-	
 	public void setMgrade(int mgrade) {
 		this.mgrade = mgrade;
-	};
-	
+	}
+
 	
 }
 

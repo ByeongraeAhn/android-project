@@ -13,10 +13,13 @@ public interface MemberDao {
   List<MemberVo> selectAll();
   
   // 회원 하나만 가져오기
-  MemberVo selectOne(int bidx);
+  MemberVo selectOne(int mid);
+  
+  // 회원 하나만 가져오기
+  MemberVo selectOneByMname(String mname);
   
   // 회원 삭제하기
-  void delete(int bidx);
+  void delete(int mid);
   
   // 회원 수정하기
   void update(MemberVo memberVo);

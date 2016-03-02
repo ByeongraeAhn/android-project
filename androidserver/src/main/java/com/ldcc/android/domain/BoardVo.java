@@ -2,6 +2,7 @@ package com.ldcc.android.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 public class BoardVo implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -13,6 +14,8 @@ public class BoardVo implements Serializable{
 	private int recommend;
 	private int bhits;
 
+	private List<CommentVo> comments;
+	
 	public BoardVo(){}
 
 	public int getBidx() {
@@ -58,7 +61,13 @@ public class BoardVo implements Serializable{
 		this.bhits = bhits;
 	}
 
+	public List<CommentVo> getComments() {
+		return comments;
+	}
 
+	public void setComments(List<CommentVo> comments) {
+		this.comments = comments;
+	}
 
 
 }

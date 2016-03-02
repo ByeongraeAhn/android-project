@@ -18,8 +18,13 @@
 	</select>
 
 	<!-- 회원 번호를 통해 하나만 가져오기 -->
-	<select id="selectOne" parameterType="java.lang.String" resultType="MemberVo">
+	<select id="selectOne" parameterType="Integer" resultType="MemberVo">
 		SELECT * FROM member WHERE MID = #{mid};
+	</select>
+	
+	<!-- 회원 이름을 통해 하나만 가져오기 -->
+	<select id="selectOneByMname" parameterType="java.lang.String" resultType="MemberVo">
+		SELECT * FROM member WHERE MNAME = #{mname};
 	</select>
 
 	<!-- 회원 삭제 -->

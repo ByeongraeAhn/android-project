@@ -17,14 +17,19 @@
 	<select id="selectAll" resultType="CommentVo">
 		SELECT * FROM comment
 	</select>
+	
+	<!-- 답변을 글아이디로 가져오기 -->
+	<select id="selectAllByBidx" parameterType="java.lang.Integer" resultType="CommentVo">
+		SELECT * FROM comment WHERE BIDX = #{bidx};
+	</select>
 
 	<!-- 답변 번호를 통해 하나만 가져오기 -->
-	<select id="selectOne" parameterType="String" resultType="CommentVo">
+	<select id="selectOne" parameterType="java.lang.Integer" resultType="CommentVo">
 		SELECT * FROM comment WHERE CIDX = #{cidx};
 	</select>
 
 	<!-- 답변 삭제 -->
-	<delete id="delete" parameterType="String">
+	<delete id="delete" parameterType="java.lang.String">
 		DELETE FROM comment WHERE CIDX = #{cidx};
 	</delete>
 

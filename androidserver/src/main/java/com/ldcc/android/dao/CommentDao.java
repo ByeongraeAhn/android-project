@@ -12,6 +12,9 @@ public interface CommentDao {
   // 답변 목록 가져오기
   List<CommentVo> selectAll();
   
+  //답변 목록 가져오기
+  List<CommentVo> selectAllByBidx(int bidx);
+  
   // 답변 하나만 가져오기
   CommentVo selectOne(int cidx);
   

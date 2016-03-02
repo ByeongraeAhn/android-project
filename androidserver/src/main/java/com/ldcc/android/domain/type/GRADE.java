@@ -1,2 +1,2 @@
 package com.ldcc.android.domain.type;
-public enum GRADE {USER, ADMIN}
+public interface GRADE {int USER =0; int ADMIN = 1;}
