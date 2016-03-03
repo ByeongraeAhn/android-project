@@ -23,18 +23,22 @@ public class MemberController {
 	@Autowired
 	MemberDao memberDao;
 
-	//회원 추가
+	//회원 가입
 	@RequestMapping(value = "/join")
-	public Object insert(/*
+	public Object insert(
 	    @RequestParam  String mname,
 		  @RequestParam  String mpwd,
-		  @RequestParam  String mloc*/) {
+		  @RequestParam  String mloc) {
+	  System.out.println("회원가입 들어옴");
 		
 	  HashMap<String,Object> responseData = new HashMap<String,Object>();
 		MemberVo memberVo = new MemberVo();
-		memberVo.setMname("aaaa");
+		/*memberVo.setMname("aaaa");
 		memberVo.setMpwd("1111");
-		memberVo.setMloc("asdf");
+		memberVo.setMloc("asdf");*/
+		memberVo.setMname(mname);
+		memberVo.setMpwd(mpwd);
+		memberVo.setMloc(mloc);
 		memberVo.setMdate(new Date(Calendar.getInstance().getTimeInMillis()));
 		memberVo.setMgrade(GRADE.USER);
 		memberDao.insert(memberVo);
@@ -49,24 +53,28 @@ public class MemberController {
 	//회원 로그인
 	@RequestMapping(value = "/login")
 	public Object login(
-	    /*@RequestParam  String mname,
-			@RequestParam  String mpwd*/) {
+	    @RequestParam  String mname,
+			@RequestParam  String mpwd) {
+	  System.out.println("로그인 들어옴");
+	  System.out.println(mname);
+	  System.out.println(mpwd);
 	  
-	  String mname = "aaaa";
-	  String mpwd = "11112";
 	  HashMap<String,Object> responseData = new HashMap<String,Object>();
 	  MemberVo memberVo = new MemberVo();
 	  
 	  memberVo = memberDao.selectOneByMname(mname);
-	  System.out.println(mpwd);
-	  System.out.println(memberVo.getMpwd());
+	  responseData.put("case", "login");
+	  
+	  if (memberVo==null) {
+	    System.out.println("들어옴");
+	    responseData.put("status", "disaccord");
+	    return responseData;
+    }
 	  
 	  responseData.put("status", "success");
 	  if (!mpwd.equals(memberVo.getMpwd())) {
 	    responseData.put("status", "disaccord");
 	  }
-	  
-	  responseData.put("case", "login");
 	  
 	  return responseData;
 	}
