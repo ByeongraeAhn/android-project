@@ -32,7 +32,7 @@ public class MemberController {
 	  System.out.println("회원가입 들어옴");
 	  System.out.println("아이디   " + mname);
     System.out.println("패스워드   " + mpwd);
-    System.out.println("패스워드   " + mloc);
+    System.out.println("주소   " + mloc);
 		
 	  HashMap<String,Object> responseData = new HashMap<String,Object>();
 		MemberVo memberVo = new MemberVo();
@@ -46,6 +46,7 @@ public class MemberController {
 		
     responseData.put("caseby", "join");
     responseData.put("status", "success");
+    responseData.put("ale", "회원가입되었습니다.");
 		
 		return responseData;
 	}
@@ -67,13 +68,15 @@ public class MemberController {
 	  responseData.put("caseby", "login");
 	  
 	  if (memberVo==null) {
-	    responseData.put("status", "disaccord");
+	    responseData.put("ale", "아이디 혹은 비밀번호를 확인해주세요");
 	    return responseData;
     }
 	  
 	  responseData.put("status", "success");
+	  responseData.put("ale", "로그인 되었습니다.");
 	  if (!mpwd.equals(memberVo.getMpwd())) {
 	    responseData.put("status", "disaccord");
+	    responseData.put("ale", "아이디 혹은 비밀번호를 확인해주세요");
 	  }
 	  
 	  return responseData;

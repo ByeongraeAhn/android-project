@@ -2,6 +2,7 @@ package com.ldcc.android.controller;
 
 import java.sql.Date;
 import java.util.Calendar;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,9 +36,13 @@ public class BoardController {
 	}
 	
 	//게시판 전체 보기
-	@RequestMapping("/")
+	@RequestMapping("/list")
 	public Object list() {
-		return boardDao.selectAll();
+	  HashMap<String,Object> responseData = new HashMap<String,Object>();
+    responseData.put("caseby", "join");
+    responseData.put("status", "success");
+    responseData.put("data", boardDao.selectAll());
+		return responseData;
 	}
 	
 	//게시글 하나 보기
