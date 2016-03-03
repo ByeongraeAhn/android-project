@@ -1,7 +1,8 @@
 var ip = 'localhost:8080/androidserver';
 
 //init();
-login();
+//login();
+join();
 
 // 접속확인
 function init() {
@@ -27,6 +28,22 @@ function login() {
 		error: function(xhr, textStatus, errorThrown) {
 			alert('작업을 완료할 수 없습니다.\n' + 
 				  '잠시 후 다시 시도하세요.\n');
+		}
+	});
+}
+
+function join() {
+	var mname = "gggg";
+	var mpwd = "123123";
+	var mloc = "한국";
+	$.ajax('http://' + ip + '/join.do?mname=' + mname + "&mpwd=" + mpwd + "&mloc=" + mloc, {
+		method: 'GET',
+		dataType: 'json',
+		success: function(result) {
+		},
+		error: function(xhr, textStatus, errorThrown) {
+			alert('작업을 완료할 수 없습니다.\n' + 
+			'잠시 후 다시 시도하세요.\n');
 		}
 	});
 }

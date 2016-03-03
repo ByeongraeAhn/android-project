@@ -1,0 +1,128 @@
+<!doctype html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Untitled Document</title>
+
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
+
+<script type="text/javascript">
+	$(document).on('click', '#checkLogin', function() {
+
+		checkLogin($('#name').val(), $('#password').val());
+
+	});
+
+	function checkLogin(id, pass) {
+
+		var params = {
+			ID : id
+
+			,
+			PASS : pass
+
+			,
+			AUTOLOGIN : 'N'
+
+		};
+
+		$.ajax({
+
+			type : 'GET',
+
+			url : "http://172.16.1.50:8080/myweb/cb.jsp",
+
+			data : params,
+
+			contentType : "Content-Type: application/javascript",
+
+			dataType : "jsonp",
+
+			jsonp : "callback",
+
+			jsonpCallback : "jsonpCallback",
+
+			error : function(xhr, ajaxOptions, thrownError) {
+
+				alert("Error: " + xhr.status + "\n" +
+
+				"Message: " + xhr.statusText + "\n" +
+
+				"Response: " + xhr.responseText + "\n" + thrownError);
+
+			}
+
+		});
+
+	}
+
+	function jsonpCallback(data) {
+
+		// alert('jsonpCallback1:___'+JSON.stringify(data));
+
+		if (data.RESULT == '2') {
+
+			$.mobile.changePage('./main.html');
+
+		} else {
+
+			alert('not user... please retry..');
+
+		}
+
+	}
+</script>
+
+</head>
+
+<body>
+
+	<div id="test-page" data-role="page">
+
+		<div data-role="header">
+
+			<h1>
+				<a data-ajax="false" href="/">Login</a>
+			</h1>
+
+		</div>
+
+		<div data-role="content">
+
+			<div data-role="fieldcontain">
+
+				<label for="name">Name:</label> <input id="name" type="email"
+					name="name" />
+
+			</div>
+
+			<div data-role="fieldcontain">
+
+				<label for="password">Password:</label> <input id="password"
+					type="password" name="password" />
+
+			</div>
+
+		</div>
+
+		<button type="button" id="checkLogin" name="checkLogin">LOGIN</button>
+
+	</div>
+
+</body>
+
+
+
+</html>
