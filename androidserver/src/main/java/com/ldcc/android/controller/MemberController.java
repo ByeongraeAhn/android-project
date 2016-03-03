@@ -30,12 +30,13 @@ public class MemberController {
 		  @RequestParam  String mpwd,
 		  @RequestParam  String mloc) {
 	  System.out.println("회원가입 들어옴");
+	  System.out.println("아이디   " + mname);
+    System.out.println("패스워드   " + mpwd);
+    System.out.println("패스워드   " + mloc);
 		
 	  HashMap<String,Object> responseData = new HashMap<String,Object>();
 		MemberVo memberVo = new MemberVo();
-		/*memberVo.setMname("aaaa");
-		memberVo.setMpwd("1111");
-		memberVo.setMloc("asdf");*/
+
 		memberVo.setMname(mname);
 		memberVo.setMpwd(mpwd);
 		memberVo.setMloc(mloc);
@@ -43,7 +44,7 @@ public class MemberController {
 		memberVo.setMgrade(GRADE.USER);
 		memberDao.insert(memberVo);
 		
-    responseData.put("case", "join");
+    responseData.put("caseby", "join");
     responseData.put("status", "success");
 		
 		return responseData;
@@ -56,17 +57,16 @@ public class MemberController {
 	    @RequestParam  String mname,
 			@RequestParam  String mpwd) {
 	  System.out.println("로그인 들어옴");
-	  System.out.println(mname);
-	  System.out.println(mpwd);
+	  System.out.println("아이디   " + mname);
+	  System.out.println("패스워드   " + mpwd);
 	  
 	  HashMap<String,Object> responseData = new HashMap<String,Object>();
 	  MemberVo memberVo = new MemberVo();
 	  
 	  memberVo = memberDao.selectOneByMname(mname);
-	  responseData.put("case", "login");
+	  responseData.put("caseby", "login");
 	  
 	  if (memberVo==null) {
-	    System.out.println("들어옴");
 	    responseData.put("status", "disaccord");
 	    return responseData;
     }
