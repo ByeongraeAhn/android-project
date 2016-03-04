@@ -25,7 +25,7 @@ public class JsonFilter implements Filter {
     
     HttpServletRequest httpRequest = (HttpServletRequest)request;
     
-    if (httpRequest.getServletPath().contains("/androidserver")) { //수정한거임
+    if (httpRequest.getServletPath().contains("/")) { //수정한거임
       HttpServletResponse httpResponse = (HttpServletResponse)response;
       httpResponse.setHeader("Access-Control-Allow-Origin", "*");
     }

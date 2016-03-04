@@ -68,6 +68,7 @@ public class MemberController {
 	  responseData.put("caseby", "login");
 	  
 	  if (memberVo==null) {
+	    responseData.put("status", "disaccord");
 	    responseData.put("ale", "아이디 혹은 비밀번호를 확인해주세요");
 	    return responseData;
     }
