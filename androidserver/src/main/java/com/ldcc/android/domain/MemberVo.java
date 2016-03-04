@@ -3,8 +3,6 @@ package com.ldcc.android.domain;
 import java.io.Serializable;
 import java.sql.Date;
 
-import com.ldcc.android.domain.type.GRADE;
-
 
 
 

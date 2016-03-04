@@ -17,7 +17,7 @@ import com.ldcc.android.domain.type.GRADE;
 
 
 @Controller
-@RequestMapping
+@RequestMapping("/member")
 public class MemberController {
 
 	@Autowired

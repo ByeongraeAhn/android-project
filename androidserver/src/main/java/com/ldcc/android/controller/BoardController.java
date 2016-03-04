@@ -38,8 +38,9 @@ public class BoardController {
 	//게시판 전체 보기
 	@RequestMapping("/list")
 	public Object list() {
+	  System.out.println("리스트로 들어옴");
 	  HashMap<String,Object> responseData = new HashMap<String,Object>();
-    responseData.put("caseby", "join");
+    responseData.put("caseby", "boardlist");
     responseData.put("status", "success");
     responseData.put("data", boardDao.selectAll());
 		return responseData;
