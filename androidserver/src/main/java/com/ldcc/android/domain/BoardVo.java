@@ -14,11 +14,12 @@ public class BoardVo implements Serializable{
 	private int recommend;
 	private int bhits;
 
+	private MemberVo onemember;
 	private List<CommentVo> comments;
 	
 	public BoardVo(){}
 
-	public int getBidx() {
+  public int getBidx() {
 		return bidx;
 	}
 	public void setBidx(int bidx) {
@@ -68,6 +69,13 @@ public class BoardVo implements Serializable{
 	public void setComments(List<CommentVo> comments) {
 		this.comments = comments;
 	}
+	
+	public MemberVo getOnemember() {
+	  return onemember;
+	}
 
+	public void setOnemember(MemberVo onemember) {
+	  this.onemember = onemember;
+	}
 
 }

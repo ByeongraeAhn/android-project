@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ldcc.android.dao.BoardDao">
 
-	<!-- 글 결과 매핑 -->
+	<!-- 글 결과 매핑(댓글용) -->
 	<resultMap type="BoardVo" id="BoardVoResultMap">
 		<result property="bidx" column="bidx" />
 		<result property="mid" column="mid" />
@@ -15,6 +15,19 @@
 		<result property="bhits" column="bhits" />
 		<collection property="comments" select="com.ldcc.android.dao.CommentDao.selectAllByBidx"
 			column="bidx" ofType="Comment"></collection>
+	</resultMap>
+	
+	<!-- 글 결과 매핑(회원정보용) -->
+	<resultMap type="BoardVo" id="BoardVoResultMap2">
+		<result property="bidx" column="bidx" />
+		<result property="mid" column="mid" />
+		<result property="bdate" column="bdate" />
+		<result property="btitle" column="btitle" />
+		<result property="bcontent" column="bcontent" />
+		<result property="recommend" column="recommend" />
+		<result property="bhits" column="bhits" />
+		<collection property="onemember" select="com.ldcc.android.dao.MemberDao.selectOne"
+			column="mid" ofType="MemberVo"></collection>
 	</resultMap>
 
 	<!-- 글 추가 -->
@@ -37,7 +50,7 @@
 	</insert>
 
 	<!-- 글 전체 가져오기 -->
-	<select id="selectAll" resultType="BoardVo">
+	<select id="selectAll" resultMap="BoardVoResultMap2">
 		SELECT *
 		FROM board
 	</select>
