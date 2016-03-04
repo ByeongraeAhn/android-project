@@ -67,18 +67,14 @@ public class MemberController {
 	  memberVo = memberDao.selectOneByMname(mname);
 	  responseData.put("caseby", "login");
 	  
-	  if (memberVo==null) {
+	  responseData.put("status", "success");
+	  responseData.put("ale", "로그인 되었습니다.");
+	  
+	  if (memberVo==null || !mpwd.equals(memberVo.getMpwd())) {
 	    responseData.put("status", "disaccord");
 	    responseData.put("ale", "아이디 혹은 비밀번호를 확인해주세요");
 	    return responseData;
     }
-	  
-	  responseData.put("status", "success");
-	  responseData.put("ale", "로그인 되었습니다.");
-	  if (!mpwd.equals(memberVo.getMpwd())) {
-	    responseData.put("status", "disaccord");
-	    responseData.put("ale", "아이디 혹은 비밀번호를 확인해주세요");
-	  }
 	  
 	  return responseData;
 	}
