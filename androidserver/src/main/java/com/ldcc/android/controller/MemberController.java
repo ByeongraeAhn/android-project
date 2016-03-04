@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,22 +24,21 @@ public class MemberController {
 	@Autowired
 	MemberDao memberDao;
 
+	@Autowired
+	ShaPasswordEncoder shaPasswordEncoder;
+	
 	//회원 가입
 	@RequestMapping(value = "/join")
 	public Object insert(
 	    @RequestParam  String mname,
 		  @RequestParam  String mpwd,
 		  @RequestParam  String mloc) {
-	  System.out.println("회원가입 들어옴");
-	  System.out.println("아이디   " + mname);
-    System.out.println("패스워드   " + mpwd);
-    System.out.println("주소   " + mloc);
 		
 	  HashMap<String,Object> responseData = new HashMap<String,Object>();
 		MemberVo memberVo = new MemberVo();
 
 		memberVo.setMname(mname);
-		memberVo.setMpwd(mpwd);
+		memberVo.setMpwd(shaPasswordEncoder.encodePassword("#소금값@"+mpwd,null));
 		memberVo.setMloc(mloc);
 		memberVo.setMdate(new Date(Calendar.getInstance().getTimeInMillis()));
 		memberVo.setMgrade(GRADE.USER);
@@ -57,20 +57,18 @@ public class MemberController {
 	public Object login(
 	    @RequestParam  String mname,
 			@RequestParam  String mpwd) {
-	  System.out.println("로그인 들어옴");
-	  System.out.println("아이디   " + mname);
-	  System.out.println("패스워드   " + mpwd);
 	  
 	  HashMap<String,Object> responseData = new HashMap<String,Object>();
 	  MemberVo memberVo = new MemberVo();
 	  
-	  memberVo = memberDao.selectOneByMname(mname);
+	  memberVo = memberDao.selectOneByMname("ddd");
 	  responseData.put("caseby", "login");
 	  
 	  responseData.put("status", "success");
 	  responseData.put("ale", "로그인 되었습니다.");
 	  
-	  if (memberVo==null || !mpwd.equals(memberVo.getMpwd())) {
+	  if (memberVo==null || 
+		  !memberVo.getMpwd().equals(shaPasswordEncoder.encodePassword("#소금값@"+mpwd,null))) {
 	    responseData.put("status", "disaccord");
 	    responseData.put("ale", "아이디 혹은 비밀번호를 확인해주세요");
 	    return responseData;
