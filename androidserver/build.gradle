@@ -61,9 +61,6 @@ dependencies {
   // Spring MVC 프레임워크 관련 라이브러리
   compile 'org.springframework:spring-webmvc:4.1.6.RELEASE'
   
-  // Spring Security 프레임워크 관련 라이브러리
-  compile 'org.springframework.security:spring-security-web:4.0.4.RELEASE'
-  
   // mybatis를 스프링 프레임워크에서 사용할 수 있도록 특별히 추가로 만든 클래스 라이브러리
   compile 'org.mybatis:mybatis-spring:1.2.2'
 
@@ -82,6 +79,8 @@ dependencies {
   // JSON_SIMPLE 라이브러리
   compile 'com.googlecode.json-simple:json-simple:1.1.1'
   
+  // Spring Security 프레임워크 관련 라이브러리
+  compile 'org.springframework.security:spring-security-web:4.0.4.RELEASE'
   
 }
 

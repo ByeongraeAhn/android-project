@@ -61,7 +61,7 @@ public class MemberController {
 	  HashMap<String,Object> responseData = new HashMap<String,Object>();
 	  MemberVo memberVo = new MemberVo();
 	  
-	  memberVo = memberDao.selectOneByMname("ddd");
+	  memberVo = memberDao.selectOneByMname(mname);
 	  responseData.put("caseby", "login");
 	  
 	  responseData.put("status", "success");

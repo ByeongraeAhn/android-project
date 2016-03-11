@@ -43,6 +43,7 @@ public class BoardController {
     /*responseData.put("caseby", "boardlist");
     responseData.put("status", "success");*/
     responseData.put("data", boardDao.selectAll());
+    System.out.println(boardDao.selectAll().get(0).getBtitle());
 		return responseData;
 	}
 	
