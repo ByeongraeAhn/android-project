@@ -33,6 +33,8 @@ public class MemberController {
 	    @RequestParam  String mname,
 		  @RequestParam  String mpwd,
 		  @RequestParam  String mloc) {
+	  
+	  System.out.println("회원가입 들어옴");
 		
 	  HashMap<String,Object> responseData = new HashMap<String,Object>();
 		MemberVo memberVo = new MemberVo();
@@ -57,6 +59,7 @@ public class MemberController {
 	public Object login(
 	    @RequestParam  String mname,
 			@RequestParam  String mpwd) {
+	  System.out.println("로그인 들어옴");
 	  
 	  HashMap<String,Object> responseData = new HashMap<String,Object>();
 	  MemberVo memberVo = new MemberVo();

@@ -1,128 +1,86 @@
 <!doctype html>
-
 <html>
-
 <head>
-
 <meta charset="UTF-8">
-
-<title>Untitled Document</title>
-
+<title>로그인 화면</title>
 <link rel="stylesheet"
-	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-
+  href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-
 <script
-	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
+  src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 
 <script type="text/javascript">
-	$(document).on('click', '#checkLogin', function() {
+  var ip = '10.131.158.87:8080/androidserver';
+  
 
-		checkLogin($('#name').val(), $('#password').val());
+  //로그인버튼 클릭이벤트
+  $(document).on('click', '#login', function() {
+    login($('#mname').val(), $('#mpwd').val());
+  });
+  
+  //회원가입버튼 클릭이벤트
+  $(document).on('click', '#join', function() {
+	  location.replace("join.html");
+  });
+  
 
-	});
+  //로그인 함수
+  function login(mname, mpwd) {
+	  var params = {
+			  mname : mname,
+			  mpwd : mpwd
+	  };
 
-	function checkLogin(id, pass) {
-
-		var params = {
-			ID : id
-
-			,
-			PASS : pass
-
-			,
-			AUTOLOGIN : 'N'
-
-		};
-
-		$.ajax({
-
-			type : 'GET',
-
-			url : "http://172.16.1.50:8080/myweb/cb.jsp",
-
-			data : params,
-
-			contentType : "Content-Type: application/javascript",
-
-			dataType : "jsonp",
-
-			jsonp : "callback",
-
-			jsonpCallback : "jsonpCallback",
-
-			error : function(xhr, ajaxOptions, thrownError) {
-
-				alert("Error: " + xhr.status + "\n" +
-
-				"Message: " + xhr.statusText + "\n" +
-
-				"Response: " + xhr.responseText + "\n" + thrownError);
-
-			}
-
-		});
-
-	}
-
-	function jsonpCallback(data) {
-
-		// alert('jsonpCallback1:___'+JSON.stringify(data));
-
-		if (data.RESULT == '2') {
-
-			$.mobile.changePage('./main.html');
-
-		} else {
-
-			alert('not user... please retry..');
-
-		}
-
-	}
+	  $.ajax('http://' + ip + '/member/login.do', {
+	    method: 'GET',
+	    data : params,
+	    dataType: 'json',
+	    success: function(result) {
+	    	if(result.status == 'success') {
+	    		location.replace("list.html");
+	    	}
+	    	else {
+	    	alert(result.ale);
+	    	}
+	    },
+	    error: function(xhr, textStatus, errorThrown) {
+	      alert('작업을 완료할 수 없습니다.\n' + 
+	          '잠시 후 다시 시도하세요.\n');
+	    }
+	  });
+  }
+ 
 </script>
+
 
 </head>
 
 <body>
+  <div id="test-page" data-role="page">
+  
+    <div data-role="header">
+      <h1>
+        <a data-ajax="false" href="/">로그인</a>
+      </h1>
+    </div>
+    
+    <div data-role="content">
+      <div data-role="fieldcontain">
+        <label for="name">ID:</label> <input id="mname" type="email"
+          name="mname" />
+      </div>
 
-	<div id="test-page" data-role="page">
+      <div data-role="fieldcontain">
+        <label for="password">Password:</label> <input id="mpwd"
+          type="password" name="mpwd" />
+      </div>
+    </div>
 
-		<div data-role="header">
+    <button type="button" id="login" name="login">LOGIN</button>
+    <button type="button" id="join" name="join">회원가입</button>
 
-			<h1>
-				<a data-ajax="false" href="/">Login</a>
-			</h1>
-
-		</div>
-
-		<div data-role="content">
-
-			<div data-role="fieldcontain">
-
-				<label for="name">Name:</label> <input id="name" type="email"
-					name="name" />
-
-			</div>
-
-			<div data-role="fieldcontain">
-
-				<label for="password">Password:</label> <input id="password"
-					type="password" name="password" />
-
-			</div>
-
-		</div>
-
-		<button type="button" id="checkLogin" name="checkLogin">LOGIN</button>
-
-	</div>
-
+  </div>
 </body>
-
-
 
 </html>

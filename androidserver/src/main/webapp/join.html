@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입 화면</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script
+  src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  
+<script type="text/javascript">
+  var ip = '10.131.158.87:8080/androidserver';
+  
+  //가입버튼 클릭이벤트
+  $(document).on('click', '#joinbutton', function() {
+    join($('#mname').val(), $('#mpwd').val(), $('#mloc').val());
+  });
+  
+  
+  //회원가입 함수
+  function join(mname, mpwd, mloc) {
+	  
+    var params = {
+        mname : mname,
+        mpwd : mpwd,
+        mloc : mloc,
+    };
+
+    $.ajax('http://' + ip + '/member/join.do', {
+      method: 'GET',
+      data : params,
+      dataType: 'json',
+      success: function(result) {
+        alert(result.ale);
+        location.replace("index.html");
+      },
+      error: function(xhr, textStatus, errorThrown) {
+        alert('작업을 완료할 수 없습니다.\n' + 
+            '잠시 후 다시 시도하세요.\n');
+      }
+    });
+  }
+
+</script>
+
+</head>
+
+<body>
+
+  <div id="test-page" data-role="page">
+    <div data-role="header">
+      <h1>
+        <a data-ajax="false" href="/">회원가입</a>
+      </h1>
+    </div>
+    
+    <div data-role="content">
+      <div data-role="fieldcontain">
+        <label for="name">ID:</label> <input id="mname" type="email"
+          name="mname" />
+      </div>
+
+      <div data-role="fieldcontain">
+        <label for="password">Password:</label> <input id="mpwd"
+          type="password" name="mpwd" />
+      </div>
+      
+      <div data-role="fieldcontain">
+        <label for="name">주소:</label> <input id="mloc" type="email"
+          name="mloc" />
+      </div>
+    </div>
+    
+    <img style="display:none; width:60px;height:60px;" id="largeImage" src="" />
+    <button type="button" id="joinbutton" name="joinbutton">가입하기</button>
+  </div>
+  
+</body>
+
+</html>
