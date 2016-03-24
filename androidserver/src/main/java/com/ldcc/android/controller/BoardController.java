@@ -25,18 +25,21 @@ public class BoardController {
 	//게시글 추가
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public Object insert(@RequestParam  String bcontent,@RequestParam  String btitle) {
-	  System.out.println(bcontent+"           " + btitle);
 	
-		/*BoardVo boardVo = new BoardVo();
+		BoardVo boardVo = new BoardVo();
 		boardVo.setMid(41);
 		boardVo.setBdate(new Date(Calendar.getInstance().getTimeInMillis()));
 		boardVo.setBcontent(bcontent);
 		boardVo.setBtitle(btitle);
-		boardVo.setBhits(123);
-		boardVo.setRecommend(1241);
-		boardDao.insert(boardVo);*/
+		boardVo.setBhits(0);
+		boardVo.setRecommend(0);
+		boardDao.insert(boardVo);
+	  
+	  HashMap<String,Object> responseData = new HashMap<String,Object>();
+    responseData.put("caseby", "boardlist");
+    responseData.put("status", "success");
 		
-		return true;
+		return responseData;
 	}
 	
 	//게시판 전체 보기
