@@ -61,6 +61,8 @@ public class MemberController {
 	    @RequestParam  String mname,
 			@RequestParam  String mpwd, HttpSession session) {
 	  
+	  System.out.println(mname + "    "+mpwd);
+	  
 	  HashMap<String,Object> responseData = new HashMap<String,Object>();
 	  MemberVo memberVo = new MemberVo();
 	  

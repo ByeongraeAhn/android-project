@@ -32,7 +32,8 @@ public class BoardController {
 	  MemberVo memberVo = (MemberVo)session.getAttribute("user");
 	
 		BoardVo boardVo = new BoardVo();
-		boardVo.setMid(40);
+		boardVo.setMid(memberVo.getMid());
+		/*boardVo.setMid(40);*/
 		boardVo.setBdate(new Date(Calendar.getInstance().getTimeInMillis()));
 		boardVo.setBcontent(bcontent);
 		boardVo.setBtitle(btitle);
@@ -52,6 +53,7 @@ public class BoardController {
 	public Object list(HttpSession session) {
 	  
 	  MemberVo memberVo = (MemberVo)session.getAttribute("user");
+	  System.out.println("리스트에서      "+memberVo.getMid());
 	    
 	  HashMap<String,Object> responseData = new HashMap<String,Object>();
     /*responseData.put("caseby", "boardlist");
