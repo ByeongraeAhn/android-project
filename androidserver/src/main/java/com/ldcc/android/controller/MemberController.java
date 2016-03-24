@@ -4,7 +4,10 @@ import java.sql.Date;
 import java.util.Calendar;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -56,14 +59,14 @@ public class MemberController {
 	@RequestMapping(value = "/login")
 	public Object login(
 	    @RequestParam  String mname,
-			@RequestParam  String mpwd) {
+			@RequestParam  String mpwd, HttpSession session) {
 	  
 	  HashMap<String,Object> responseData = new HashMap<String,Object>();
 	  MemberVo memberVo = new MemberVo();
 	  
 	  memberVo = memberDao.selectOneByMname(mname);
-	  responseData.put("caseby", "login");
 	  
+	  responseData.put("caseby", "login");
 	  responseData.put("status", "success");
 	  responseData.put("ale", "로그인 되었습니다.");
 	  
@@ -74,6 +77,8 @@ public class MemberController {
 	    return responseData;
     }
 	  
+	  //세션저장(로그인 유지)
+    session.setAttribute("user", memberVo); 
 	  return responseData;
 	}
 	

@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.util.Calendar;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ldcc.android.dao.BoardDao;
 import com.ldcc.android.domain.BoardVo;
+import com.ldcc.android.domain.MemberVo;
 
 
 @Controller
@@ -24,10 +27,14 @@ public class BoardController {
 
 	//게시글 추가
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public Object insert(@RequestParam  String bcontent,@RequestParam  String btitle) {
+	public Object insert(@RequestParam  String bcontent,@RequestParam  String btitle/*, HttpSession session*/) {
+	  
+/*	  MemberVo memberVo = new MemberVo();
+	  memberVo = (MemberVo)session.getAttribute("user");
+	  System.out.println(memberVo.getMname());*/
 	
 		BoardVo boardVo = new BoardVo();
-		boardVo.setMid(41);
+		boardVo.setMid(40);
 		boardVo.setBdate(new Date(Calendar.getInstance().getTimeInMillis()));
 		boardVo.setBcontent(bcontent);
 		boardVo.setBtitle(btitle);
@@ -44,7 +51,11 @@ public class BoardController {
 	
 	//게시판 전체 보기
 	@RequestMapping("/list")
-	public Object list() {
+	public Object list(HttpSession session) {
+	  
+	  MemberVo memberVo = (MemberVo)session.getAttribute("user");
+	  System.out.println(memberVo);
+	    
 	  HashMap<String,Object> responseData = new HashMap<String,Object>();
     /*responseData.put("caseby", "boardlist");
     responseData.put("status", "success");*/
