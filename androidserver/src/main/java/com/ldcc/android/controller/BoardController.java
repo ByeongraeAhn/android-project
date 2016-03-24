@@ -23,13 +23,17 @@ public class BoardController {
 	BoardDao boardDao;
 
 	//게시글 추가
-	@RequestMapping(value = "/", method = RequestMethod.POST)
+	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public Object insert(@RequestParam  String bcontent,@RequestParam  String btitle) {
-		
+	  System.out.println(bcontent+"           " + btitle);
+	
 		BoardVo boardVo = new BoardVo();
+		boardVo.setMid(41);
 		boardVo.setBdate(new Date(Calendar.getInstance().getTimeInMillis()));
 		boardVo.setBcontent(bcontent);
 		boardVo.setBtitle(btitle);
+		boardVo.setBhits(123);
+		boardVo.setRecommend(1241);
 		boardDao.insert(boardVo);
 		
 		return true;
