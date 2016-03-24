@@ -28,7 +28,7 @@
         for ( var i in rows) {
           $('<tr>').attr('class', 'dataRow').html(
               '<th>' + rows[i].bidx + '</th>\n'
-            + '<td>' + rows[i].btitle + '</td>\n'
+            + '<td><a href="post.html"</a>' + rows[i].btitle + '</td>\n'
             + '<td width="43px" nowrap>' + rows[i].onemember.mname + '</td>\n'
             + '<td>' + rows[i].bdate + '</td>\n')
               .appendTo(table);
