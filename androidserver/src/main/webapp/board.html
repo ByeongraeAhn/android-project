@@ -14,7 +14,12 @@
   
   list();
   
-  //회원가입 함수
+  //글 작성 클릭이벤트
+  $(document).on('click', '#postbutton', function() {
+	  postbutton($('#btitle').val(), $('#bcontent').val());
+  });
+  
+  //글 리스트
   function list() {
     $.ajax('http://' + ip + '/board/list.do', {
       method : 'GET',
@@ -39,6 +44,27 @@
       }
     });
   }
+  
+  function postbutton(btitle, bcontent) {
+	    var params = {
+	    		btitle : btitle,
+	    		bcontent : bcontent,
+	    };
+	    
+	    $.ajax('http://' + ip + '/board/insert.do', {
+	      method: 'POST',
+	      data : params,
+	      dataType: 'json',
+	      success: function(result) {
+	    	  alert("글이 등록되었습니다")
+	        location.replace("board.html");
+	      },
+	      error: function(xhr, textStatus, errorThrown) {
+	        alert('작업을 완료할 수 없습니다.\n' + 
+	            '잠시 후 다시 시도하세요.\n');
+	      }
+	    });
+	  }
 </script>
 
 </head>
@@ -55,14 +81,12 @@ a{ text-decoration: none;}
 <!-- 판넬 -->
 <div  data-theme="a" data-role="panel"  data-position="right" id="panel"> 
 	
-	<form action="http://10.131.122.79:8080/androidserver/board/insert.do" method="post">
-		<input placeholder="제목을 입력해주세요!" type="text" name="btitle">	
-		<textarea placeholder="내용을 입력해주세요!" style="height:100px;"rows="20" name="bcontent" id="textarea-2"></textarea>
-		<div data-role="controlgroup">
-				<input data-icon="check" data-theme="c" data-role="button" type="submit" value="등록"></input>
-				<input  data-icon="delete" data-theme="d" data-role="button" type="button" value="취소" onclick="location.href='board.html';"></input>
-		</div>
-	</form>
+	<input placeholder="제목을 입력해주세요!" type="text" name="btitle" id="btitle">	
+	<textarea placeholder="내용을 입력해주세요!" style="height:100px;"rows="20" name="bcontent" id="bcontent"></textarea>
+	<div data-role="controlgroup">
+		<button type="button" id="postbutton" name="postbutton" data-icon="check" data-theme="c" data-role="button">등록</button>
+		<input  data-icon="delete" data-theme="d" data-role="button" type="button" value="취소" onclick="location.href='board.html';"></input>
+	</div>
 </div>
 
 <!-- 헤더 -->

@@ -27,11 +27,9 @@ public class BoardController {
 
 	//게시글 추가
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public Object insert(@RequestParam  String bcontent,@RequestParam  String btitle/*, HttpSession session*/) {
+	public Object insert(@RequestParam  String bcontent,@RequestParam  String btitle, HttpSession session) {
 	  
-/*	  MemberVo memberVo = new MemberVo();
-	  memberVo = (MemberVo)session.getAttribute("user");
-	  System.out.println(memberVo.getMname());*/
+	  MemberVo memberVo = (MemberVo)session.getAttribute("user");
 	
 		BoardVo boardVo = new BoardVo();
 		boardVo.setMid(40);
@@ -54,7 +52,6 @@ public class BoardController {
 	public Object list(HttpSession session) {
 	  
 	  MemberVo memberVo = (MemberVo)session.getAttribute("user");
-	  System.out.println(memberVo);
 	    
 	  HashMap<String,Object> responseData = new HashMap<String,Object>();
     /*responseData.put("caseby", "boardlist");
