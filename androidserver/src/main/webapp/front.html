@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="http://ququplay.github.io/jquery-mobile-flat-ui-theme/css/jquery.mobile.flatui.css" />
+  <script src="http://ququplay.github.io/jquery-mobile-flat-ui-theme/js/jquery.min.js"></script>
+  <script src="http://ququplay.github.io/jquery-mobile-flat-ui-theme/js/jquery.mobile-1.3.1.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<style>
+a{ text-decoration: none;}
+</style>
+
+  <div data-role="page">
+
+    <div  data-theme="a" data-role="panel"  data-position="right" id="panel">
+      <h3 style="color:white;">회원가입</h3>
+      <input placeholder="아이디"/>
+        <input placeholder="이메일"/>
+        <input type="password" placeholder="비밀번호"/>
+          <input type="password" placeholder="비밀번호 재확인"/>
+<a data-icon="check" href="index.html"  data-theme="c" data-role="button">확인</a>
+
+  </div>
+
+    <div data-role="header">
+      <a data-iconpos="notext" data-role="button" data-icon="home" title="Home">Home</a>
+      <h1 style="font-weight: bold;">로그인</h1>
+      <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-man"></a>
+    </div>
+
+    <div  data-role="content" role="main">
+  	<div style="position: absolute; left: 50%; transform: translateX(-50%);">
+      <h1 style="font-weight: bold;"> Buffer Overflow </h1>
+    </div>
+    <br><br><br><br><br>
+    <br>
+    <input placeholder="아이디"/>
+      <input type="password" placeholder="비밀번호"/>
+      <div data-role="controlgroup">
+      <a data-icon="check" href="index.html"  data-theme="c" data-role="button">확인</a>
+      <a  data-icon="flat-man" href="#panel"  data-theme="b" data-role="button">회원가입</a>
+      </div>
+</div>
+
+    </div>
+	<div data-role="footer" data-position="fixed">
+	<input data-theme="c" type="search" name="search" id="search-basic" value="" />
+
+</div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="http://ququplay.github.io/jquery-mobile-flat-ui-theme/css/jquery.mobile.flatui.css" />
+  <script src="http://ququplay.github.io/jquery-mobile-flat-ui-theme/js/jquery.min.js"></script>
+  <script src="http://ququplay.github.io/jquery-mobile-flat-ui-theme/js/jquery.mobile-1.3.1.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<style>
+a{ text-decoration: none;}
+</style>
+
+  <div data-role="page">
+
+    <div  data-theme="a" data-role="panel"  data-position="right" id="panel">
+
+<textarea placeholder="답변 내용을 입력해주세요!" style="height:400px;"rows="20" name="textarea-2" id="textarea-2"></textarea>
+<div data-role="controlgroup">
+<a data-icon="check" href="index.html"  data-theme="c" data-role="button">확인</a>
+<a  data-icon="delete" href="index.html"  data-theme="d" data-role="button">취소</a>
+</div>
+  </div>
+
+    <div data-role="header">
+      <a data-iconpos="notext" data-role="button" data-icon="home" title="Home">Home</a>
+      <h1>글보기 </h1>
+      <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-new"></a>
+    </div>
+
+    <div data-role="content" role="main">
+	    <table  >
+      <thead>
+        <tr>
+          <th style="width:10%; data-priority="1"></th>
+          <th style="width:80%;"data-priority="persist"></th>
+          <th style="width:20%; data-priority="2"></th>
+          <th style="width:20%; data-priority="4"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>6</th>
+          <td><a href="http://en.wikipedia.org/wiki/Citizen_Kane" data-rel="external">스프링이 무엇인가요?</a></td>
+          <td>민수</td>
+          <td>2</td>
+        </tr>
+                <tr>
+                  <th></th>
+          <td colspan="3">스프링 프레임워크(Spring Framework)가 무엇인지 정말 궁급합니다.</td>
+
+        </tr>
+      </tbody>
+    </table>
+
+<hr>
+    <table  >
+    <thead>
+      <tr>
+        <th style="width:10%; data-priority="1"></th>
+        <th style="width:80%;"data-priority="persist"></th>
+        <th style="width:20%; data-priority="2"></th>
+        <th style="width:20%; data-priority="4"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td colspan="2"></td>
+        <td>병래</td>
+        <td>2</td>
+      </tr>
+              <tr>
+                <th></th>
+        <td colspan="3">스프링 프레임워크(Spring Framework)는 자바 플랫폼을 위한 오픈소스 애플리케이션 프레임워크로서 간단히 스프링(Spring)이라고도 불린다. 동적인 웹 사이트를 개발하기 위한 여러 가지 서비스를 제공하고 있다. 대한민국 공공기관의 웹 서비스 개발 시 사용을 권장하고 있는 전자정부 표준프레임워크의 기반 기술로서 쓰이고 있다.</td>
+
+      </tr>
+    </tbody>
+  </table>
+
+    </div>
+	<div data-role="footer" data-position="fixed">
+	<input data-theme="c" type="search" name="search" id="search-basic" value="" />
+
+</div>
+</body>
+</html>
