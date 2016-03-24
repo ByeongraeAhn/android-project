@@ -11,7 +11,7 @@
 
 
 <script type="text/javascript">
-  var ip = '10.131.158.87:8080/androidserver';
+  var ip = '10.131.122.79:8080/androidserver';
   
 
   //로그인버튼 클릭이벤트
@@ -38,7 +38,7 @@
 	    dataType: 'json',
 	    success: function(result) {
 	    	if(result.status == 'success') {
-	    		location.replace("list.html");
+	    		location.replace("board.html");
 	    	}
 	    	else {
 	    	alert(result.ale);
