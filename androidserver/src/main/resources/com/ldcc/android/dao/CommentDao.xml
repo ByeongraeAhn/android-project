@@ -4,7 +4,16 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ldcc.android.dao.CommentDao">
 
-
+  <!-- 글 결과 매핑(회원정보 , 댓글 매핑) -->
+  <resultMap type="CommentVo" id="CommentVoResultMap">
+    <result property="cidx" column="cidx" />
+    <result property="mid" column="mid" />
+    <result property="bidx" column="bidx" />
+    <result property="ccontent" column="ccontent" />
+    <result property="cdate" column="cdate" />
+    <collection property="onemember" select="com.ldcc.android.dao.MemberDao.selectOne"
+      column="mid" ofType="MemberVo"></collection>
+  </resultMap>
 
 	<!-- 답변 추가 -->
 	<insert id="insert" parameterType="CommentVo">
@@ -19,7 +28,7 @@
 	</select>
 	
 	<!-- 답변을 글아이디로 가져오기 -->
-	<select id="selectAllByBidx" parameterType="java.lang.Integer" resultType="CommentVo">
+	<select id="selectAllByBidx" parameterType="java.lang.Integer" resultMap="CommentVoResultMap">
 		SELECT * FROM comment WHERE BIDX = #{bidx};
 	</select>
 

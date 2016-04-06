@@ -11,7 +11,9 @@ public class CommentVo implements Serializable{
 	private String ccontent;
 	private Date cdate;
 	
-	public CommentVo(){}
+	private MemberVo onemember;
+	
+  public CommentVo(){}
 
 	public int getCidx() {
 		return cidx;
@@ -52,6 +54,13 @@ public class CommentVo implements Serializable{
 	public void setCdate(Date cdate) {
 		this.cdate = cdate;
 	}
+	
+  public MemberVo getOnemember() {
+    return onemember;
+  }
 
+  public void setOnemember(MemberVo onemember) {
+    this.onemember = onemember;
+  }
 	
 }

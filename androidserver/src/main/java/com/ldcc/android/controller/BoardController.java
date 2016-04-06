@@ -32,8 +32,8 @@ public class BoardController {
 	  MemberVo memberVo = (MemberVo)session.getAttribute("user");
 	
 		BoardVo boardVo = new BoardVo();
-		boardVo.setMid(memberVo.getMid());
-		/*boardVo.setMid(40);*/
+		/*boardVo.setMid(memberVo.getMid());*/
+		boardVo.setMid(40);
 		boardVo.setBdate(new Date(Calendar.getInstance().getTimeInMillis()));
 		boardVo.setBcontent(bcontent);
 		boardVo.setBtitle(btitle);
@@ -53,7 +53,6 @@ public class BoardController {
 	public Object list(HttpSession session) {
 	  
 	  MemberVo memberVo = (MemberVo)session.getAttribute("user");
-	  System.out.println("리스트에서      "+memberVo.getMid());
 	    
 	  HashMap<String,Object> responseData = new HashMap<String,Object>();
     /*responseData.put("caseby", "boardlist");
@@ -63,12 +62,17 @@ public class BoardController {
 	}
 	
 	//게시글 하나 보기
-	@RequestMapping("/{bidx}")
-	public Object view(@PathVariable int bidx) {
+	@RequestMapping("/view")
+	public Object view(@RequestParam int bidx, HttpSession session) {
+	  
 		BoardVo boardVo = boardDao.selectOne(bidx);
 		boardVo.setBhits(boardVo.getBhits()+1);
 		boardDao.update(boardVo);
-		return boardVo;
+		
+		HashMap<String,Object> responseData = new HashMap<String,Object>();
+		responseData.put("data", boardVo);
+		
+		return responseData;
 	}
 	
 	//게시글 수정
