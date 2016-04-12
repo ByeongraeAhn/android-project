@@ -32,8 +32,8 @@ public class BoardController {
 	  MemberVo memberVo = (MemberVo)session.getAttribute("user");
 	
 		BoardVo boardVo = new BoardVo();
-		/*boardVo.setMid(memberVo.getMid());*/
-		boardVo.setMid(40);
+		boardVo.setMid(memberVo.getMid());
+		/*boardVo.setMid(40);*/
 		boardVo.setBdate(new Date(Calendar.getInstance().getTimeInMillis()));
 		boardVo.setBcontent(bcontent);
 		boardVo.setBtitle(btitle);
@@ -58,6 +58,7 @@ public class BoardController {
     /*responseData.put("caseby", "boardlist");
     responseData.put("status", "success");*/
     responseData.put("data", boardDao.selectAll());
+    responseData.put("user", memberVo);
 		return responseData;
 	}
 	

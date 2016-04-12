@@ -33,6 +33,17 @@
 			<bean class="com.ldcc.android.intercepter.LoginCheckInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors> -->
+	
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**/*" />
+            <mvc:exclude-mapping path="/member/*"/>
+            <!-- <mvc:exclude-mapping path="/login/*"/> -->
+            <bean class="com.ldcc.android.intercepter.LoginCheckInterceptor2"></bean>            
+        </mvc:interceptor>        
+    </mvc:interceptors>
+    
+    
 </beans>
 
 

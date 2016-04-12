@@ -14,6 +14,9 @@
         http://mybatis.org/schema/mybatis-spring.xsd">
 
 
+  <!-- DataSource, DAO, SqlSessionFactory, Transaction 객체를 준비하기 위해
+       빈을 찾는 장소를 지정한다.
+       단, 페이지 컨트롤러는 제외한다. -->  
 	<context:component-scan base-package="com.ldcc.android">
 		<context:exclude-filter type="regex"
 			expression="com.ldcc.android.controller.*" />
