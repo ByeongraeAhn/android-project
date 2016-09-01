@@ -22,7 +22,7 @@ compileJava {
   options.encoding = "UTF-8"
   
   // 컴파일할 때 소스의 자바 버전을 검사한다.
-  sourceCompatibility = 1.8
+  sourceCompatibility = 1.6
 }
 
 // WTP 플러그인과 관련된 설정 파일의 내용을 변경하기
@@ -30,8 +30,8 @@ compileJava {
 eclipse {
   wtp {
     facet {
-      facet name: 'jst.web', version: '3.1'
-      facet name: 'jst.java', version: '1.8'
+      facet name: 'jst.web', version: '2.5'
+      facet name: 'jst.java', version: '1.6'
     }
   }
 }
@@ -59,13 +59,13 @@ dependencies {
   compile 'mysql:mysql-connector-java:5.1.35'
 
   // Spring MVC 프레임워크 관련 라이브러리
-  compile 'org.springframework:spring-webmvc:4.1.6.RELEASE'
+  compile 'org.springframework:spring-webmvc:3.2.3.RELEASE'
   
   // mybatis를 스프링 프레임워크에서 사용할 수 있도록 특별히 추가로 만든 클래스 라이브러리
   compile 'org.mybatis:mybatis-spring:1.2.2'
 
   // Spring jdbc 관련 라이브러리
-  compile 'org.springframework:spring-jdbc:4.1.6.RELEASE'
+  compile 'org.springframework:spring-jdbc:3.2.3.RELEASE'
 
   // JSON 입/출력 관련 의존 라이브러리
   compile 'com.google.code.gson:gson:2.3.1'
@@ -79,8 +79,6 @@ dependencies {
   // JSON_SIMPLE 라이브러리
   compile 'com.googlecode.json-simple:json-simple:1.1.1'
   
-  // Spring Security 프레임워크 관련 라이브러리
-  compile 'org.springframework.security:spring-security-web:4.0.4.RELEASE'
   
 }
 

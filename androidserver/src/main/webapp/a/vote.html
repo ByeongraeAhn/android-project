@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="EUC-KR">
+<head>
+  <title>롯데 VOTE</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+
+  
+  
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1000px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h3>8월 연구소 Lab. AWARDS</h3>
+      <br>
+      <br>
+      <br>
+      
+      <ul class="nav nav-pills nav-stacked">
+         <table class="table">
+     <thead>
+       <tr>
+         <th>순위</th>
+         <th>lab</th>
+         <th>주제</th>
+       </tr>
+     </thead>
+<!--      <tbody>
+       <tr class="danger">
+        <td>1등</td>
+         <td>Dev-In COP</td>
+         <td>MDM 보안솔루션</td>
+       </tr>
+       <tr class="info">
+        <td>2등</td>
+         <td>Tech-R</td>
+         <td>-----</td>
+       </tr>
+       <tr class="success">
+        <td>3등</td>
+         <td>Big-DASH</td>
+         <td>-----</td>
+       </tr>
+       <tr class="warning">
+       <td>4등</td>    
+        <td>지식기반커뮤니티</td>
+        <td>-----</td>
+       </tr>
+     </tbody> -->
+     
+     <tbody id="boardTable">
+     <!-- 받아온 값이 세팅되는 DOM --> 
+     </tbody>
+    
+   </table>
+      </ul>
+      
+  
+    </div>
+    <div class="col-sm-9">
+    <img src="winner.jpg" style="margin-left: auto; margin-right: auto; display: block;" alt="winner">
+    <div style="text-align:center"><h1 id="victory"></h1><hr><h2>9월에는 누가 우승할까요 ? 화이팅 ^^</h2></div>
+      </div>
+</body>
+
+  <script type="text/javascript">
+  var table = $('#boardTable');
+  //아이피
+  //var ip = '10.131.158.23:8080/voteproject';
+  var ip = 'lempqa.ldcc.co.kr/license';
+  
+  $.ajax('http://' + ip + '/vote/voteresult.do', {
+      method: 'GET',
+      dataType: 'json',
+      success: function(result) {
+    	  var rows = result.data;
+    	  
+          $('<tr>').attr('class', 'danger').html(
+                  '<td>1등</td> <td>'+rows[0].teamname+'</td> <td>'+rows[0].title+'</td>'
+                  )
+                  .appendTo(table);
+                  
+          $('<tr>').attr('class', 'info').html(
+                  '<td>2등</td> <td>'+rows[1].teamname+'</td> <td>'+rows[1].title+'</td>'
+                  )
+                  .appendTo(table);
+          
+          $('<tr>').attr('class', 'success').html(
+                  '<td>3등</td> <td>'+rows[2].teamname+'</td> <td>'+rows[2].title+'</td>'
+                  )
+                  .appendTo(table);
+          
+          $('<tr>').attr('class', 'warning').html(
+                  '<td>4등</td> <td>'+rows[3].teamname+'</td> <td>'+rows[3].title+'</td>'
+                  )
+                  .appendTo(table);
+          
+          $('#victory').append('1등 : ' + rows[0].teamname +' ')
+          
+      },
+      error: function(xhr, textStatus, errorThrown) {
+        alert('작업을 완료할 수 없습니다.\n' + 
+            '잠시 후 다시 시도하세요.\n');
+      }
+  });
+
+    
+ 
+  </script>
+  
+</html>
+

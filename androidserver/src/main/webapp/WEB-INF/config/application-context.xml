@@ -35,13 +35,6 @@
 		<property name="mapperLocations" value="classpath*:com/ldcc/android/dao/*Dao.xml" />
 	</bean>
 
-
-	<bean id="passwordEncoder"
-		class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
-		<constructor-arg value="256" />
-		<property name="iterations" value="1000" />
-	</bean>
-
 	<mybatis:scan base-package="com.ldcc.android.dao" />
 
 </beans>

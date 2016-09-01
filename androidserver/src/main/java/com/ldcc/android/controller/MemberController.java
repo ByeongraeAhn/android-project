@@ -7,7 +7,6 @@ import java.util.HashMap;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,8 +25,8 @@ public class MemberController {
 	@Autowired
 	MemberDao memberDao;
 
-	@Autowired
-	ShaPasswordEncoder shaPasswordEncoder;
+/*	@Autowired
+	ShaPasswordEncoder shaPasswordEncoder;*/
 	
 	//회원 가입
 	@RequestMapping(value = "/join")
@@ -40,7 +39,7 @@ public class MemberController {
 		MemberVo memberVo = new MemberVo();
 
 		memberVo.setMname(mname);
-		memberVo.setMpwd(shaPasswordEncoder.encodePassword("#소금값@"+mpwd,null));
+		/*memberVo.setMpwd(shaPasswordEncoder.encodePassword("#소금값@"+mpwd,null));*/
 		memberVo.setMloc(mloc);
 		memberVo.setMdate(new Date(Calendar.getInstance().getTimeInMillis()));
 		memberVo.setMgrade(GRADE.USER);
@@ -68,13 +67,13 @@ public class MemberController {
 	  responseData.put("caseby", "login");
 	  responseData.put("status", "success");
 	  responseData.put("ale", "로그인 되었습니다.");
-	  
+/*	  
 	  if (memberVo==null || 
 		  !memberVo.getMpwd().equals(shaPasswordEncoder.encodePassword("#소금값@"+mpwd,null))) {
 	    responseData.put("status", "disaccord");
 	    responseData.put("ale", "아이디 혹은 비밀번호를 확인해주세요");
 	    return responseData;
-    }
+    }*/
 	  
 	  //세션저장(로그인 유지)
     session.setAttribute("user", memberVo); 

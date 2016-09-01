@@ -24,6 +24,7 @@ public class JsonFilter implements Filter {
       FilterChain chain) throws IOException, ServletException {
     
     HttpServletRequest httpRequest = (HttpServletRequest)request;
+    System.out.println("여기오나");
     
     if (httpRequest.getServletPath().contains("/")) { //수정한거임
       HttpServletResponse httpResponse = (HttpServletResponse)response;
