@@ -28,6 +28,32 @@ public class TestController {
 
 	@Autowired
 	VoteDao voteDao;
+	
+	@RequestMapping(value = "/validation", method = RequestMethod.GET)
+	public Object validation(
+			@RequestParam String name)
+			throws UnsupportedEncodingException {
+
+		
+		//이름 디코딩
+		String nameUTF = URLDecoder.decode(name, "utf-8");
+		
+		//초기 설정
+		HashMap<String, Object> responseData = new HashMap<String, Object>();
+		responseData.put("status", "success");
+		
+		//투표 했는지 검증
+		List<VoteVo> voteVoValidation = voteDao.validationName();
+		
+		for (int i = 0; i < voteVoValidation.size(); i++) {
+			if (voteVoValidation.get(i).getName().equals(nameUTF)) {
+				responseData.put("status", "dup");
+			} 
+		}
+
+		return responseData;
+
+	}
 
 	// 투표 INSERT
 	@RequestMapping(value = "/voteinsert", method = RequestMethod.GET)
@@ -62,20 +88,6 @@ public class TestController {
 		//초기 설정
 		HashMap<String, Object> responseData = new HashMap<String, Object>();
 		responseData.put("status", "success");
-		
-		//투표 했는지 검증
-		List<VoteVo> voteVoValidation = voteDao.validationName();
-		int count = 0;
-		for (int i = 0; i < voteVoValidation.size(); i++) {
-			if (voteVoValidation.get(i).getName().equals(nameUTF)) {
-				count ++;
-			} 
-		}
-		if (count == 5){
-			responseData.put("status", "dup");
-			return responseData;
-		}
-		
 		
 		// question = 문제
 		// selected = 정답
@@ -221,10 +233,10 @@ public class TestController {
 		int d4 = list.getQ1num4();
 		
 		List<Integer> listper4 = new ArrayList<Integer>();
-		listper4.add((int) (a1 / (float) (a4 + b4 + c4 + d4) * 100));
-		listper4.add((int) (b1 / (float) (a4 + b4 + c4 + d4) * 100));
-		listper4.add((int) (c1 / (float) (a4 + b4 + c4 + d4) * 100));
-		listper4.add((int) (d1 / (float) (a4 + b4 + c4 + d4) * 100));
+		listper4.add((int) (a4 / (float) (a4 + b4 + c4 + d4) * 100));
+		listper4.add((int) (b4 / (float) (a4 + b4 + c4 + d4) * 100));
+		listper4.add((int) (c4 / (float) (a4 + b4 + c4 + d4) * 100));
+		listper4.add((int) (d4 / (float) (a4 + b4 + c4 + d4) * 100));
 		listper4.add(a4);
 		listper4.add(b4);
 		listper4.add(c4);

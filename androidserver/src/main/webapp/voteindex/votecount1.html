@@ -54,94 +54,110 @@
 		</div>
 	</div>
 
-	<script type="text/javascript" charset="utf-8">
-		// 아이피
-		var ip = '221.167.194.186:8080/vote'
+<script type="text/javascript" charset="utf-8">
+	// 아이피
+	var ip = '221.167.194.186:8080/vote'
 
-		//카운트다운
-		var countdown = $("#countdown").countdown360({
-			radius : 30,
-			seconds : 30,
-			fontColor : '#FFFFFF',
-			autostart : false,
-			onComplete : function() {
-				alert("투표가 마감됬습니다.");
-				location.replace('index.html')
-			}
-		});
-		countdown.start();
-		console.log('countdown360 ', countdown);
-		$(document).on("click", "button", function(e) {
-			e.preventDefault();
-			var type = $(this).attr("data-type");
-			if (type === "time-remaining") {
-				var timeRemaining = countdown.getTimeRemaining();
-				alert(timeRemaining);
-			} else {
-				var timeElapsed = countdown.getElapsedTime();
-				alert(timeElapsed);
-			}
-		});
-		
-		//로그인 페이지로 부터 이름 받기
-		var getname = location.href.substr(location.href.lastIndexOf('=') + 1);
-		
-		//이름 세글자 검증하기(세글자는 27)
-		if (getname.length != 27) {
-    		alert('이름을 세글자로 정확히 입력해 주세요');
-    		location.replace('login.html')
-    	}
-		
-		//Timestamp 시작
-		startTime = Date.now();
-
-		//서버에 전송하기
-		function send() {
-			
-			//Timestamp 종료
-			var endTime = Date.now();
-			//답 제출까지 총 걸린시간
-			var difference = endTime - startTime;
-			//choice 엘리먼트 가져오기
-			var sample = document.getElementsByName('choice');
-
-			for (var i = 0; i < sample.length; i++) {
-				if (sample[i].checked == true) {
-
-					var params = {
-							//인코딩 하면 깨짐. 서버는 디코딩 필요
-							//name : encodeURIComponent(getname),
-							name : getname,
-							//1번문제
-							question : 1,
-							selected : sample[i].value,
-							delay : difference
-					}
-
-					$.ajax('http://' + ip + '/voteinsert.do', {
-					//$.ajax('http://' + ip + '/testtest.do', {	
-						method : 'GET',
-						data : params,
-						dataType : 'json',
-						success : function(result) {
-							 if(result.status == 'dup') {
-								alert('이미 투표를 진행하셨습니다.');
-								location.href = 'index.html';
-							 } else {
-								location.href = 'votecount2.html?login_name='+getname+'';
-							 }
-						},
-						error : function(xhr, textStatus, errorThrown) {
-							alert('작업을 완료할 수 없습니다.\n' + '잠시 후 다시 시도하세요.\n');
-						}
-					});
-
-				}
-			}
-
-			//location.replace('index.html')
+	//카운트다운
+	var countdown = $("#countdown").countdown360({
+		radius : 30,
+		seconds : 30,
+		fontColor : '#FFFFFF',
+		autostart : false,
+		onComplete : function() {
+			alert("투표가 마감됬습니다.");
+			location.replace('index.html')
 		}
-	</script>
+	});
+	countdown.start();
+	console.log('countdown360 ', countdown);
+	$(document).on("click", "button", function(e) {
+		e.preventDefault();
+		var type = $(this).attr("data-type");
+		if (type === "time-remaining") {
+			var timeRemaining = countdown.getTimeRemaining();
+			alert(timeRemaining);
+		} else {
+			var timeElapsed = countdown.getElapsedTime();
+			alert(timeElapsed);
+		}
+	});
+	
+	//로그인 페이지로 부터 이름 받기
+	var getname = location.href.substr(location.href.lastIndexOf('=') + 1);
+	
+	//이름 세글자 검증하기(세글자는 27)
+	if (getname.length != 27) {
+   		alert('이름을 세글자로 정확히 입력해 주세요');
+   		location.replace('login.html')
+   	}
+	
+	//중복 투표 검증을 위한 파라미터
+	var params2 = {
+			name : getname,
+	}
+	
+	//중복 투표 검증
+	$.ajax('http://' + ip + '/validation.do', {
+			method : 'GET',
+			data : params2,
+			dataType : 'json',
+			success : function(result) {
+				 if(result.status == 'dup') {
+					alert('이미 투표를 진행하셨습니다.');
+					location.href = 'index.html';
+				 } 
+			},
+			error : function(xhr, textStatus, errorThrown) {
+				alert('작업을 완료할 수 없습니다.\n' + '잠시 후 다시 시도하세요.\n');
+			}
+	});
+	
+	//Timestamp 시작
+	startTime = Date.now();
+
+	//서버에 전송하기
+	function send() {
+		
+		//Timestamp 종료
+		var endTime = Date.now();
+		//답 제출까지 총 걸린시간
+		var difference = endTime - startTime;
+		//choice 엘리먼트 가져오기
+		var sample = document.getElementsByName('choice');
+
+		for (var i = 0; i < sample.length; i++) {
+			if (sample[i].checked == true) {
+
+				var params = {
+						//인코딩 하면 깨짐. 서버는 디코딩 필요
+						//name : encodeURIComponent(getname),
+						name : getname,
+						//1번문제
+						question : 1,
+						selected : sample[i].value,
+						delay : difference
+				}
+
+				$.ajax('http://' + ip + '/voteinsert.do', {
+				//$.ajax('http://' + ip + '/testtest.do', {	
+					method : 'GET',
+					data : params,
+					dataType : 'json',
+					success : function(result) {
+						location.href = 'votecount2.html?login_name='+getname+'';
+					},
+					error : function(xhr, textStatus, errorThrown) {
+						alert('작업을 완료할 수 없습니다.\n' + '잠시 후 다시 시도하세요.\n');
+					}
+				});
+
+			}
+		}
+
+		//location.replace('index.html')
+	}
+</script>
 
 <script src="js/jquery.min.js"></script>
 <script src="js/slider.min.js"></script>
