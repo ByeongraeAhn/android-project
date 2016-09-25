@@ -3,20 +3,124 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ldcc.android.dao.VoteDao">
-	
-	<!-- 투표수정 -->
-	<update id="update" parameterType="Integer">
-		UPDATE labvote
-		SET
-		votecount = votecount + 1 
-		WHERE idx = #{idx};
-	</update>
-	
+		
 	 <!-- 투표결과 가져오기 -->
-  <select id="selectAll" resultType="VoteVo">
-    SELECT *
-    FROM labvote
-    ORDER BY votecount desc;
-  </select>
+	 <select id="selectAll" resultType="VoteVo">
+select a.name, a.sum_delay delaysum, a.sum_correct correctsum, b.incorrect from(select name, sum(delay) sum_delay, sum(correct) sum_correct 
+from vote
+group by name) a
+left outer join
+(select name,
+group_concat(question separator',') as incorrect
+from vote where correct = 0
+group by name)b
+on a.name = b.name
+ORDER BY correctsum DESC, 
+delaysum ASC;
+	 </select>
+	 
+	 	 <!-- 이름검증하기 -->
+	 <select id="validationName" resultType="VoteVo">
+		SELECT *
+		FROM
+		vote;
+	 </select>
+  
+  	<!-- 투표 입력 -->
+  	<insert id="insert" parameterType="VoteVo">
+		INSERT
+		INTO vote
+		(name
+		,question
+		,selected
+		,delay
+		,correct)
+		VALUES
+		(#{name}
+		,#{question}
+		,#{selected}
+		,#{delay}
+		,#{correct});
+	</insert>
+	
+	<!-- 통계 가져오기 (문제1) -->
+	 <select id="selectCal1" resultType="ResultVo">
+	    SELECT question,
+		(SELECT 
+		count(*) FROM vote WHERE question = 1 AND selected = 1) q1num1,
+		(SELECT 
+		count(*) FROM vote WHERE question = 1 AND selected = 2) q1num2,
+		(SELECT 
+		count(*) FROM vote WHERE question = 1 AND selected = 3) q1num3,
+		(SELECT 
+		count(*) FROM vote WHERE question = 1 AND selected = 4) q1num4
+		FROM vote
+		GROUP BY question
+		HAVING question = 1;
+	 </select>
+	 
+	 <!-- 통계 가져오기 (문제2) -->
+	 <select id="selectCal2" resultType="ResultVo">
+	    SELECT question,
+		(SELECT 
+		count(*) FROM vote WHERE question = 2 AND selected = 1) q1num1,
+		(SELECT 
+		count(*) FROM vote WHERE question = 2 AND selected = 2) q1num2,
+		(SELECT 
+		count(*) FROM vote WHERE question = 2 AND selected = 3) q1num3,
+		(SELECT 
+		count(*) FROM vote WHERE question = 2 AND selected = 4) q1num4
+		FROM vote
+		GROUP BY question
+		HAVING question = 2;
+	 </select>
+	 
+	 <!-- 통계 가져오기 (문제3) -->
+	 <select id="selectCal3" resultType="ResultVo">
+	    SELECT question,
+		(SELECT 
+		count(*) FROM vote WHERE question = 3 AND selected = 1) q1num1,
+		(SELECT 
+		count(*) FROM vote WHERE question = 3 AND selected = 2) q1num2,
+		(SELECT 
+		count(*) FROM vote WHERE question = 3 AND selected = 3) q1num3,
+		(SELECT 
+		count(*) FROM vote WHERE question = 3 AND selected = 4) q1num4
+		FROM vote
+		GROUP BY question
+		HAVING question = 3;
+	 </select>
+	 
+	 <!-- 통계 가져오기 (문제4) -->
+	 <select id="selectCal4" resultType="ResultVo">
+	    SELECT question,
+		(SELECT 
+		count(*) FROM vote WHERE question = 4 AND selected = 1) q1num1,
+		(SELECT 
+		count(*) FROM vote WHERE question = 4 AND selected = 2) q1num2,
+		(SELECT 
+		count(*) FROM vote WHERE question = 4 AND selected = 3) q1num3,
+		(SELECT 
+		count(*) FROM vote WHERE question = 4 AND selected = 4) q1num4
+		FROM vote
+		GROUP BY question
+		HAVING question = 4;
+	 </select>
+	 
+	 <!-- 통계 가져오기 (문제5) -->
+	 <select id="selectCal5" resultType="ResultVo">
+	    SELECT question,
+		(SELECT 
+		count(*) FROM vote WHERE question = 5 AND selected = 1) q1num1,
+		(SELECT 
+		count(*) FROM vote WHERE question = 5 AND selected = 2) q1num2,
+		(SELECT 
+		count(*) FROM vote WHERE question = 5 AND selected = 3) q1num3,
+		(SELECT 
+		count(*) FROM vote WHERE question = 5 AND selected = 4) q1num4
+		FROM vote
+		GROUP BY question
+		HAVING question = 5;
+	 </select>
 
 </mapper>

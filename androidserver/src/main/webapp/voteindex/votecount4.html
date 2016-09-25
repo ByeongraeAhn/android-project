@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>New design for mobifreaks</title>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0" />
+<link rel="stylesheet" href="css/style.css" />
+<link href="http://mobifreaks.com/wp-content/demos/demo.css" rel="stylesheet" type="text/css" />
+<script	src="http://ququplay.github.io/jquery-mobile-flat-ui-theme/js/jquery.min.js"></script>
+<script src="js/countdown360.js" type="text/javascript" charset="utf-8"></script>
+
+<style>
+.centered {
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<div class="wrap">
+		<header class="header">
+			<div class="logo">
+				<a href="index.html"><img src="images/logo.png" alt="" /></a>
+			</div>
+			<br class="clearfix" />
+		</header>
+		<hr class="separator" />
+		<div class="container">
+			<div class="content">
+				<h1>9月 LAB결산</h1>
+				<p>문제를 풀어볼까요? 우수 정답자에게는 어마어마한 상품이 기다리고 있습니다!</p>
+				<div id="countdown" class="centered"></div>
+				<hr class="separator" />
+
+				<!-- 문제 -->
+				<div>
+					<h4>문제4. 컴퓨터 부품이 아닌것은?</h4>
+
+					<input type="radio" name="choice" value="1" checked="checked" />
+					CPU <label></label> <br>
+					<input type="radio"	name="choice" value="2" /> 
+					HDD <label></label> <br>
+					<input type="radio" name="choice" value="3" />
+					PSD <label></label> <br>
+					<input type="radio" name="choice" value="4" />
+					Memory <label></label> <br>
+				</div>
+
+				<div>
+					<!-- <input type="submit" value="Submit" /> -->
+					<input type="button" value="투표완료" onclick="send()" />
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" charset="utf-8">
+		// 아이피
+		var ip = '221.167.194.186:8080/vote'
+
+		//카운트다운
+		var countdown = $("#countdown").countdown360({
+			radius : 30,
+			seconds : 30,
+			fontColor : '#FFFFFF',
+			autostart : false,
+			onComplete : function() {
+				alert("투표가 마감됬습니다.");
+				location.replace('index.html')
+			}
+		});
+		countdown.start();
+		console.log('countdown360 ', countdown);
+		$(document).on("click", "button", function(e) {
+			e.preventDefault();
+			var type = $(this).attr("data-type");
+			if (type === "time-remaining") {
+				var timeRemaining = countdown.getTimeRemaining();
+				alert(timeRemaining);
+			} else {
+				var timeElapsed = countdown.getElapsedTime();
+				alert(timeElapsed);
+			}
+		});
+		
+		//로그인 페이지로 부터 이름 받기
+		var getname = location.href.substr(location.href.lastIndexOf('=') + 1);
+		
+		//Timestamp 시작
+		startTime = Date.now();
+
+		//서버에 전송하기
+		function send() {
+			
+			//Timestamp 종료
+			var endTime = Date.now();
+			//답 제출까지 총 걸린시간
+			var difference = endTime - startTime;
+			//choice 엘리먼트 가져오기
+			var sample = document.getElementsByName('choice');
+
+			for (var i = 0; i < sample.length; i++) {
+				if (sample[i].checked == true) {
+
+					var params = {
+							//인코딩 하면 깨짐. 서버는 디코딩 필요
+							//name : encodeURIComponent(getname),
+							name : getname,
+							//1번문제
+							question : 4,
+							selected : sample[i].value,
+							delay : difference
+					}
+
+					$.ajax('http://' + ip + '/voteinsert.do', {
+						method : 'GET',
+						data : params,
+						dataType : 'json',
+						success : function(result) {
+							 location.href = 'votecount5.html?login_name='+getname+'';
+						},
+						error : function(xhr, textStatus, errorThrown) {
+							alert('작업을 완료할 수 없습니다.\n' + '잠시 후 다시 시도하세요.\n');
+						}
+					});
+
+				}
+			}
+
+			//location.replace('index.html')
+		}
+	</script>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/slider.min.js"></script>
+
+
+</body>
+</html>

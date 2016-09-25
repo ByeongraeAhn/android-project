@@ -22,7 +22,7 @@
 			expression="com.ldcc.android.controller.*" />
 	</context:component-scan>
 
-	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/andboarddb" />
+	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/java67db" />
 
 	<bean id="txManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

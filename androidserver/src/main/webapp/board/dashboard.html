@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="../../favicon.ico">
+
+<title>정보기술연구소 투표결과</title>
+
+<!-- Bootstrap core CSS -->
+<link href="login/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="dashboard/dashboard.css" rel="stylesheet">
+
+<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+	<!-- 헤더 -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">정보기술연구소</a>
+			</div>
+		</div>
+	</nav>
+
+	<!-- 컨텐츠 -->
+	<div class="container-fluid">
+		<div class="row">
+
+			<!-- 사이드바 -->
+			<div class="col-sm-3 col-md-2 sidebar">
+				<ul class="nav nav-sidebar">
+					<li class="active"><a href="#">종합결과 <span class="sr-only">(current)</span></a></li>
+					<li><a href="#">랭킹</a></li>
+					<li><a href="#">문제별 정답</a></li>
+					<li><a href="#">문제별 득표율</a></li>
+				</ul>
+				<ul class="nav nav-sidebar">
+					<li><a href="">관리자 페이지</a></li>
+				</ul>
+
+			</div>
+
+			<!-- 컨테이너 -->
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+				<!-- 대쉬보드 -->
+				<h1 class="page-header">종합 결과</h1>
+				<div class="row placeholders">
+					<div class="col-xs-6 col-sm-3 placeholder">
+						<img id="rank1img" src="" class="img-responsive"
+							alt="Generic placeholder thumbnail">
+						<h4 id="rank1name"></h4>
+						<span class="text-muted">1등</span>
+					</div>
+					<div class="col-xs-6 col-sm-3 placeholder">
+						<img id="rank2img" src="" class="img-responsive"
+							alt="Generic placeholder thumbnail">
+						<h4 id="rank2name"></h4>
+						<span class="text-muted">2등</span>
+					</div>
+					<div class="col-xs-6 col-sm-3 placeholder">
+						<img id="rank3img" src="" class="img-responsive"
+							alt="Generic placeholder thumbnail">
+						<h4 id="rank3name"></h4>
+						<span class="text-muted">3등</span>
+					</div>
+					<div class="col-xs-6 col-sm-3 placeholder">
+						<img id="fasterimg" src="" class="img-responsive"
+							alt="Generic placeholder thumbnail">
+						<h4 id="fastername"></h4>
+						<span class="text-muted">가장 빠른 투표</span>
+					</div>
+				</div>
+
+				<!-- 그리들 -->
+				<h2 class="sub-header">랭킹</h2>
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>랭킹</th>
+								<th>투표자</th>
+								<th>맞춘 개수</th>
+								<th>제출 시간</th>
+								<th>틀린 문제</th>
+							</tr>
+						</thead>
+						<tbody id="boardTable">
+
+							<!-- <tr>
+			                  <td>1,001</td>
+			                  <td>Lorem</td>
+			                  <td>ipsum</td>
+			                  <td>dolor</td>
+			                  <td>sit</td>
+			                </tr>
+			                <tr>
+			                  <td>1,002</td>
+			                  <td>amet</td>
+			                  <td>consectetur</td>
+			                  <td>adipiscing</td>
+			                  <td>elit</td>
+			                </tr> -->
+
+						</tbody>
+					</table>
+				</div>
+
+				<!-- 문제별 정답 -->
+				<h2 class="sub-header">문제별 정답</h2>
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">문제1. 연구소 최고의 미남은?</h3>
+							</div>
+							<div class="panel-body">남환우</div>
+						</div>
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h3 class="panel-title">컴퓨터 부품이 아닌것은?</h3>
+							</div>
+							<div class="panel-body">PSD</div>
+						</div>
+					</div>
+					<!-- /.col-sm-4 -->
+					<div class="col-sm-4">
+						<div class="panel panel-success">
+							<div class="panel-heading">
+								<h3 class="panel-title">문제2. 정보기술연구소은 몇층인가요?</h3>
+							</div>
+							<div class="panel-body">5층</div>
+						</div>
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class="panel-title">문제5. 휴지는 몇 미터 일까요?</h3>
+							</div>
+							<div class="panel-body">5M</div>
+						</div>
+					</div>
+					<!-- /.col-sm-4 -->
+					<div class="col-sm-4">
+						<div class="panel panel-warning">
+							<div class="panel-heading">
+								<h3 class="panel-title">문제3. 안병래님은 몇살일까요?</h3>
+							</div>
+							<div class="panel-body">29세</div>
+						</div>
+					</div>
+					<!-- /.col-sm-4 -->
+				</div>
+
+				<!-- 문제별 정답 -->
+				<h2 class="sub-header">문제별 투표율</h2>
+
+				문제1
+				<div class="progress">
+					<div class="progress-bar progress-bar-success progress-bar-striped" id=q1num1per
+						 width: 0%">
+						<span id=q1num1>송재일 - </span>
+					</div>
+					<div class="progress-bar progress-bar-warning progress-bar-striped" id=q1num2per
+						 width: 0%">
+						<span id=q1num2>남환우 - </span>
+					</div>
+					<div class="progress-bar progress-bar-danger progress-bar-striped" id=q1num3per
+						 width: 0%">
+						<span id=q1num3>안병래 - </span>
+					</div>
+					<div class="progress-bar progress-bar-info progress-bar-striped" id=q1num4per
+						 width: 0%">
+						<span id=q1num4>이상현 - </span>
+					</div>
+				</div>
+				<br><br> 
+				
+				문제2
+				<div class="progress">
+					<div class="progress-bar progress-bar-success progress-bar-striped" id=q2num1per
+						 width: 0%">
+						<span id=q2num1>2층 - </span>
+					</div>
+					<div class="progress-bar progress-bar-warning progress-bar-striped" id=q2num2per
+						 width: 0%">
+						<span id=q2num2>3층 - </span>
+					</div>
+					<div class="progress-bar progress-bar-danger progress-bar-striped" id=q2num3per
+						 width: 0%">
+						<span id=q2num3>12층- </span>
+					</div>
+					<div class="progress-bar progress-bar-info progress-bar-striped" id=q2num4per
+						 width: 0%">
+						<span id=q2num4>5층 - </span>
+					</div>
+				</div>
+				<br><br> 
+				
+				문제3
+				<div class="progress">
+					<div class="progress-bar progress-bar-success progress-bar-striped" id=q3num1per
+						 width: 0%">
+						<span id=q3num1>29세 - </span>
+					</div>
+					<div class="progress-bar progress-bar-warning progress-bar-striped" id=q3num2per
+						 width: 0%">
+						<span id=q3num2>31세 - </span>
+					</div>
+					<div class="progress-bar progress-bar-danger progress-bar-striped" id=q3num3per
+						 width: 0%">
+						<span id=q3num3>25세 - </span>
+					</div>
+					<div class="progress-bar progress-bar-info progress-bar-striped" id=q3num4per
+						 width: 0%">
+						<span id=q3num4>32세 - </span>
+					</div>
+				</div>
+				<br><br>
+				
+				문제4
+				<div class="progress">
+					<div class="progress-bar progress-bar-success progress-bar-striped" id=q4num1per
+						 width: 0%">
+						<span id=q4num1>CPU - </span>
+					</div>
+					<div class="progress-bar progress-bar-warning progress-bar-striped" id=q4num2per
+						 width: 0%">
+						<span id=q4num2>HDD - </span>
+					</div>
+					<div class="progress-bar progress-bar-danger progress-bar-striped" id=q4num3per
+						 width: 0%">
+						<span id=q4num3>PSD - </span>
+					</div>
+					<div class="progress-bar progress-bar-info progress-bar-striped" id=q4num4per
+						 width: 0%">
+						<span id=q4num4>Memory - </span>
+					</div>
+				</div>
+				<br><br>
+				
+				문제5
+				<div class="progress">
+					<div class="progress-bar progress-bar-success progress-bar-striped" id=q5num1per
+						 width: 0%">
+						<span id=q5num1>3M - </span>
+					</div>
+					<div class="progress-bar progress-bar-warning progress-bar-striped" id=q5num2per
+						 width: 0%">
+						<span id=q5num2>5M - </span>
+					</div>
+					<div class="progress-bar progress-bar-danger progress-bar-striped" id=q5num3per
+						 width: 0%">
+						<span id=q5num3>14M - </span>
+					</div>
+					<div class="progress-bar progress-bar-info progress-bar-striped" id=q5num4per
+						 width: 0%">
+						<span id=q5num4>20M - </span>
+					</div>
+				</div>
+				<br><br>
+								
+
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="../../dist/js/bootstrap.min.js"></script>
+	<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+	<script src="../../assets/js/vendor/holder.js"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+
+<script type="text/javascript">
+	var table = $('#boardTable');
+	//아이피
+	//var ip = '10.131.158.23:8080/voteproject';
+	//var ip = 'lempqa.ldcc.co.kr/license';
+	var ip = '221.167.194.186:8080/vote'
+	var imgname;
+
+	$.ajax('http://' + ip + '/voteresult.do', {
+		method : 'GET',
+		dataType : 'json',
+		success : function(result) {
+			var rows = result.data;
+
+			//랭킹별로 테이블 값 집어 넣음
+			for ( var i in rows) {
+				//ms를 초로 환산한다.
+				var delaysumsec = rows[i].delaysum / 1000;
+				//인덱스가 0이기 때문에 1을 더해준다.
+				var rank = parseInt(i) + 1;
+				//incorrect 가 null이면 '다맞음'으로 변환한다. null이 아니면 숫자 뒤에 '번' 붙인다.
+				var transincorrect;
+				if (rows[i].incorrect == null) {
+					transincorrect = '만점!'
+				} else {
+					transincorrect = rows[i].incorrect +' 번'
+				}
+
+				$('<tr>').html(
+						'<td>' + rank + '</td> <td>' + rows[i].name
+								+ '</td> <td>' + rows[i].correctsum
+								+ '</td> <td>' + delaysumsec
+								+ '초 </td> <td>' + transincorrect + '</td>').appendTo(table);
+			}
+			
+			//우수 정답자 TOP3 사진 및 이름 넣기 (이 아래라인부터)
+			try {
+				for ( var i in rows) {
+					var rank = parseInt(i) + 1;
+					var image = document.getElementById('rank' + rank + 'img');
+					imgname = rows[i].name;
+					image.src = "img/" + imgname + ".jpg";
+					$('#rank' + rank + 'name').append(imgname);
+				}
+			} catch (exception) {} 
+			
+			//가장 빠르게 투표한 사람 사진 및 이름 넣기
+			for ( var i in rows) {
+				if (rows[i].delaysum <= rows[0].delaysum) {
+					rows[0] = rows[i];
+				}
+			}
+			var image = document.getElementById('fasterimg');
+			imgname = rows[0].name;
+			image.src = "img/" + imgname + ".jpg";
+			$('#fastername').append(imgname);
+			
+		},
+
+		error : function(xhr, textStatus, errorThrown) {
+			alert('작업을 완료할 수 없습니다.\n' + '잠시 후 다시 시도하세요.\n');
+		}
+	});
+	
+	$.ajax('http://' + ip + '/votecal.do', {
+		method : 'GET',
+		dataType : 'json',
+		contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
+		success : function(result) {
+			//1번 문제 응답
+			var rows1 = result.listper1;
+			//2번 문제 응답
+			var rows2 = result.listper2;
+			//3번 문제 응
+			var rows3 = result.listper3;
+			//4번 문제 응답
+			var rows4 = result.listper4;
+			//5번 문제 응답
+			var rows5 = result.listper5;
+
+			//1번
+				//투표수퍼센트
+				$("#q1num1per").css("width",rows1[0]+"%");
+				$("#q1num2per").css("width",rows1[1]+"%");
+				$("#q1num3per").css("width",rows1[2]+"%");
+				$("#q1num4per").css("width",rows1[3]+"%");			
+				
+				//투표
+				$('#q1num1').append(rows1[4] +'표');
+				$('#q1num2').append(rows1[5] +'표');
+				$('#q1num3').append(rows1[6] +'표');
+				$('#q1num4').append(rows1[7] +'표');
+				
+			//2번
+				//투표수퍼센트
+				$("#q2num1per").css("width",rows2[0]+"%");
+				$("#q2num2per").css("width",rows2[1]+"%");
+				$("#q2num3per").css("width",rows2[2]+"%");
+				$("#q2num4per").css("width",rows2[3]+"%");			
+				
+				//투표
+				$('#q2num1').append(rows2[4] +'표');
+				$('#q2num2').append(rows2[5] +'표');
+				$('#q2num3').append(rows2[6] +'표');
+				$('#q2num4').append(rows2[7] +'표');
+
+			//3번
+				//투표수퍼센트
+				$("#q3num1per").css("width",rows3[0]+"%");
+				$("#q3num2per").css("width",rows3[1]+"%");
+				$("#q3num3per").css("width",rows3[2]+"%");
+				$("#q3num4per").css("width",rows3[3]+"%");			
+				
+				//투표
+				$('#q3num1').append(rows3[4] +'표');
+				$('#q3num2').append(rows3[5] +'표');
+				$('#q3num3').append(rows3[6] +'표');
+				$('#q3num4').append(rows3[7] +'표');
+				
+			//4번
+				//투표수퍼센트
+				$("#q4num1per").css("width",rows4[0]+"%");
+				$("#q4num2per").css("width",rows4[1]+"%");
+				$("#q4num3per").css("width",rows4[2]+"%");
+				$("#q4num4per").css("width",rows4[3]+"%");			
+				
+				//투표
+				$('#q4num1').append(rows4[4] +'표');
+				$('#q4num2').append(rows4[5] +'표');
+				$('#q4num3').append(rows4[6] +'표');
+				$('#q4num4').append(rows4[7] +'표');
+
+			//5번
+				//투표수퍼센트
+				$("#q5num1per").css("width",rows5[0]+"%");
+				$("#q5num2per").css("width",rows5[1]+"%");
+				$("#q5num3per").css("width",rows5[2]+"%");
+				$("#q5num4per").css("width",rows5[3]+"%");			
+				
+				//투표
+				$('#q5num1').append(rows5[4] +'표');
+				$('#q5num2').append(rows5[5] +'표');
+				$('#q5num3').append(rows5[6] +'표');
+				$('#q5num4').append(rows5[7] +'표');
+
+
+		},
+		error : function(xhr, textStatus, errorThrown) {
+			alert('작업을 완료할 수 없습니다.\n' + '잠시 후 다시 시도하세요.\n');
+		}
+	});
+	
+</script>
+
+</html>

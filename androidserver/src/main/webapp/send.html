@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<script src="http://ququplay.github.io/jquery-mobile-flat-ui-theme/js/jquery.min.js"></script>
+<script type="text/javascript">
+
+var ip = '221.167.194.186:8080/vote'
+var str = '손준락'
+
+var params = {
+  	  name : encodeURIComponent(str),
+  	  question : 1,
+  	  selected : 1,
+      delay : 1001
+}
+  
+$.ajax('http://' + ip + '/voteinsert.do', {
+       method: 'GET',
+       data : params,
+       dataType: 'json',
+       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+       success: function(result) {
+         alert("성공");
+       	
+       },
+       error: function(xhr, textStatus, errorThrown) {
+         alert('작업을 완료할 수 없습니다.\n' + 
+             '잠시 후 다시 시도하세요.\n');
+       }
+   });
+
+</script>
+<body>
+
+</body>
+</html>

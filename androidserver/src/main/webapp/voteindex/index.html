@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>정보기술연구소 Voting 시스템</title>
+<meta name="viewport"
+	content="width=device-width; initial-scale=1.0; maximum-scale=1.0" />
+<link rel="stylesheet" href="css/style.css" />
+<link href="http://mobifreaks.com/wp-content/demos/demo.css"
+	rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+	<div class="wrap">
+		<header class="header">
+			<div class="logo">
+				<a href="index.html"><img src="images/logo.png" alt="" /></a>
+			</div>
+			<br class="clearfix" />
+		</header>
+		<hr class="separator" />
+
+		<div class="container">
+			<!-- Image Slider -->
+			<ul id="slider" class="slider">
+				<li><img src="images/7.jpg" alt="" /></li>
+				<li><img src="images/6.jpg" alt="" /></li>
+				<li><img src="images/5.jpg" alt="" /></li>
+				<li><img src="images/4.jpg" alt="" /></li>
+				<li><img src="images/2.jpg" alt="" /></li>
+				<li><img src="images/3.jpg" alt="" /></li>
+				<li><img src="images/1.jpg" alt="" /></li>
+			</ul>
+			<div class="content">
+				<h2>Welcome!</h2>
+				<p>
+					정보기술연구소 가족분들 환영합니다. <br>9月 LAB 결산 Voting 시스템입니다.
+				</p>
+			</div>
+			<hr class="separator" />
+			<aside>
+				<a name="menu"></a>
+				<ul class="menu">
+					<li class="icon home"><a href="login.html">문제풀기</a></li>
+					<li class="icon gear"><a href="services.html">Services</a></li>
+					<li class="icon bubble"><a href="contact.html">Contact Us</a></li>
+				</ul>
+			</aside>
+		</div>
+		<hr class="separator" />
+		<footer class="footer">
+			<p>&copy; 2016 lempqa.ldcc.co.kr &bull; All Rights Reserved</p>
+			<div class="social">
+				<a href="https://www.facebook.com/groups/317981558554542"><img
+					src="images/facebook.png" alt=""></a> <a
+					href="https://twitter.com/"><img src="images/twitter.png"
+					alt=""></a> <a href="https://plus.google.com/"><img
+					src="images/gplus.png" alt=""></a>
+			</div>
+		</footer>
+	</div>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/slider.min.js"></script>
+	<script>
+		$(function() {
+
+			// Slideshow 1
+			$("#slider").responsiveSlides({
+				maxwidth : 800,
+				speed : 800
+			});
+
+		});
+	</script>
+</body>
+</html>

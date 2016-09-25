@@ -84,7 +84,7 @@
     </div>
     <div class="col-sm-9">
     <img src="winner.jpg" style="margin-left: auto; margin-right: auto; display: block;" alt="winner">
-    <div style="text-align:center"><h1 id="victory"></h1><hr><h2>9월에는 누가 우승할까요 ? 화이팅 ^^</h2></div>
+    <div style="text-align:center"><h1 id="victory"></h1><hr><h2>9월에는 누가 우승할까요 ? 연구소 화이팅!</h2></div>
       </div>
 </body>
 
@@ -92,7 +92,8 @@
   var table = $('#boardTable');
   //아이피
   //var ip = '10.131.158.23:8080/voteproject';
-  var ip = 'lempqa.ldcc.co.kr/license';
+  //var ip = 'lempqa.ldcc.co.kr/license';
+  var ip = '221.167.194.123:8080/vote'
   
   $.ajax('http://' + ip + '/vote/voteresult.do', {
       method: 'GET',
@@ -115,10 +116,10 @@
                   )
                   .appendTo(table);
           
-          $('<tr>').attr('class', 'warning').html(
+/*           $('<tr>').attr('class', 'warning').html(
                   '<td>4등</td> <td>'+rows[3].teamname+'</td> <td>'+rows[3].title+'</td>'
                   )
-                  .appendTo(table);
+                  .appendTo(table); */
           
           $('#victory').append('1등 : ' + rows[0].teamname +' ')
           
