@@ -21,6 +21,9 @@ public interface VoteDao {
   //투표하기
   void insert(VoteVo voteVo);
   
+  //데이터삭제
+  void deletedata();
+  
   //결과 가져오기 (문제1)
   ResultVo selectCal1();
   

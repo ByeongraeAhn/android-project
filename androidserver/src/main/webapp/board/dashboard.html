@@ -59,39 +59,191 @@
 					<li><a href="#">문제별 득표율</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li><a href="">관리자 페이지</a></li>
+					<li><a href="" onclick="deletedata();">데이터 삭제</a></li>
 				</ul>
-
 			</div>
 
 			<!-- 컨테이너 -->
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			
+				<!-- 문제별 정답 -->
+				<h2 class="sub-header">문제별 정답</h2>
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">문제1. 데이터 분석관점에서 가장 강조하는 부분은?</h3>
+							</div>
+							<div class="panel-body">데이터 패턴</div>
+						</div>
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h3 class="panel-title">문제4. 빅데이터의 특정인 3V가 아닌것은?</h3>
+							</div>
+							<div class="panel-body">Value(가치)</div>
+						</div>
+					</div>
+					<!-- /.col-sm-4 -->
+					<div class="col-sm-4">
+						<div class="panel panel-success">
+							<div class="panel-heading">
+								<h3 class="panel-title">문제2. 구글 회장이 언급한 2003년까지의 생성된 데이터의 양은?</h3>
+							</div>
+							<div class="panel-body">15엑사바이트</div>
+						</div>
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class="panel-title">문제5. 빅데이터 성공요소가 아닌것은?</h3>
+							</div>
+							<div class="panel-body">비용</div>
+						</div>
+					</div>
+					<!-- /.col-sm-4 -->
+					<div class="col-sm-4">
+						<div class="panel panel-warning">
+							<div class="panel-heading">
+								<h3 class="panel-title">문제3. 빅데이터 등장배경이 아닌 경우는?</h3>
+							</div>
+							<div class="panel-body">하둡개발자 증가</div>
+						</div>
+					</div>
+					<!-- /.col-sm-4 -->
+				</div>
+
+				<!-- 문제별 답 선택율 -->
+				<h2 class="sub-header">문제별 답 선택율</h2>
+
+				문제1
+				<div class="progress">
+					<div class="progress-bar progress-bar-success progress-bar-striped" id=q1num1per
+						 width: 0%">
+						<span id=q1num1>데이터다양성 - </span>
+					</div>
+					<div class="progress-bar progress-bar-warning progress-bar-striped" id=q1num2per
+						 width: 0%">
+						<span id=q1num2>데이터발생속도 - </span>
+					</div>
+					<div class="progress-bar progress-bar-danger progress-bar-striped" id=q1num3per
+						 width: 0%">
+						<span id=q1num3>데이터사이즈 - </span>
+					</div>
+					<div class="progress-bar progress-bar-info progress-bar-striped" id=q1num4per
+						 width: 0%">
+						<span id=q1num4>데이터패턴 - </span>
+					</div>
+				</div>
+				<br><br> 
+				
+				문제2
+				<div class="progress">
+					<div class="progress-bar progress-bar-success progress-bar-striped" id=q2num1per
+						 width: 0%">
+						<span id=q2num1>15엑사바이트 - </span>
+					</div>
+					<div class="progress-bar progress-bar-warning progress-bar-striped" id=q2num2per
+						 width: 0%">
+						<span id=q2num2>15페타바이트 - </span>
+					</div>
+					<div class="progress-bar progress-bar-danger progress-bar-striped" id=q2num3per
+						 width: 0%">
+						<span id=q2num3>15제타바이트- </span>
+					</div>
+					<div class="progress-bar progress-bar-info progress-bar-striped" id=q2num4per
+						 width: 0%">
+						<span id=q2num4>5요토바이트 - </span>
+					</div>
+				</div>
+				<br><br> 
+				
+				문제3
+				<div class="progress">
+					<div class="progress-bar progress-bar-success progress-bar-striped" id=q3num1per
+						 width: 0%">
+						<span id=q3num1>데이터의증가 - </span>
+					</div>
+					<div class="progress-bar progress-bar-warning progress-bar-striped" id=q3num2per
+						 width: 0%">
+						<span id=q3num2>빅데이터업체증가 - </span>
+					</div>
+					<div class="progress-bar progress-bar-danger progress-bar-striped" id=q3num3per
+						 width: 0%">
+						<span id=q3num3>하둡개발자증가 - </span>
+					</div>
+					<div class="progress-bar progress-bar-info progress-bar-striped" id=q3num4per
+						 width: 0%">
+						<span id=q3num4>메모리비용하락 - </span>
+					</div>
+				</div>
+				<br><br>
+				
+				문제4
+				<div class="progress">
+					<div class="progress-bar progress-bar-success progress-bar-striped" id=q4num1per
+						 width: 0%">
+						<span id=q4num1>속도 - </span>
+					</div>
+					<div class="progress-bar progress-bar-warning progress-bar-striped" id=q4num2per
+						 width: 0%">
+						<span id=q4num2>가치 - </span>
+					</div>
+					<div class="progress-bar progress-bar-danger progress-bar-striped" id=q4num3per
+						 width: 0%">
+						<span id=q4num3>규모 - </span>
+					</div>
+					<div class="progress-bar progress-bar-info progress-bar-striped" id=q4num4per
+						 width: 0%">
+						<span id=q4num4>형태 - </span>
+					</div>
+				</div>
+				<br><br>
+				
+				문제5
+				<div class="progress">
+					<div class="progress-bar progress-bar-success progress-bar-striped" id=q5num1per
+						 width: 0%">
+						<span id=q5num1>지원 - </span>
+					</div>
+					<div class="progress-bar progress-bar-warning progress-bar-striped" id=q5num2per
+						 width: 0%">
+						<span id=q5num2>기술 - </span>
+					</div>
+					<div class="progress-bar progress-bar-danger progress-bar-striped" id=q5num3per
+						 width: 0%">
+						<span id=q5num3>규모 - </span>
+					</div>
+					<div class="progress-bar progress-bar-info progress-bar-striped" id=q5num4per
+						 width: 0%">
+						<span id=q5num4>형태 - </span>
+					</div>
+				</div>
+				<br><br>
+								
 
 				<!-- 대쉬보드 -->
 				<h1 class="page-header">종합 결과</h1>
 				<div class="row placeholders">
 					<div class="col-xs-6 col-sm-3 placeholder">
-						<img id="rank1img" src="" class="img-responsive"
-							alt="Generic placeholder thumbnail">
-						<h4 id="rank1name"></h4>
+						<!-- <img id="rank1img" src="" class="img-responsive"
+							alt="Generic placeholder thumbnail"> -->
+						<h1 id="rank1name"></h1>
 						<span class="text-muted">1등</span>
 					</div>
 					<div class="col-xs-6 col-sm-3 placeholder">
-						<img id="rank2img" src="" class="img-responsive"
-							alt="Generic placeholder thumbnail">
-						<h4 id="rank2name"></h4>
+						<!-- <img id="rank2img" src="" class="img-responsive"
+							alt="Generic placeholder thumbnail"> -->
+						<h3 id="rank2name"></h3>
 						<span class="text-muted">2등</span>
 					</div>
 					<div class="col-xs-6 col-sm-3 placeholder">
-						<img id="rank3img" src="" class="img-responsive"
-							alt="Generic placeholder thumbnail">
-						<h4 id="rank3name"></h4>
+						<!-- <img id="rank3img" src="" class="img-responsive"
+							alt="Generic placeholder thumbnail"> -->
+						<h3 id="rank3name"></h3>
 						<span class="text-muted">3등</span>
 					</div>
 					<div class="col-xs-6 col-sm-3 placeholder">
-						<img id="fasterimg" src="" class="img-responsive"
-							alt="Generic placeholder thumbnail">
-						<h4 id="fastername"></h4>
+						<!-- <img id="fasterimg" src="" class="img-responsive"
+							alt="Generic placeholder thumbnail"> -->
+						<h3 id="fastername"></h3>
 						<span class="text-muted">가장 빠른 투표</span>
 					</div>
 				</div>
@@ -130,158 +282,7 @@
 					</table>
 				</div>
 
-				<!-- 문제별 정답 -->
-				<h2 class="sub-header">문제별 정답</h2>
-				<div class="row">
-					<div class="col-sm-4">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title">문제1. 연구소 최고의 미남은?</h3>
-							</div>
-							<div class="panel-body">남환우</div>
-						</div>
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								<h3 class="panel-title">컴퓨터 부품이 아닌것은?</h3>
-							</div>
-							<div class="panel-body">PSD</div>
-						</div>
-					</div>
-					<!-- /.col-sm-4 -->
-					<div class="col-sm-4">
-						<div class="panel panel-success">
-							<div class="panel-heading">
-								<h3 class="panel-title">문제2. 정보기술연구소은 몇층인가요?</h3>
-							</div>
-							<div class="panel-body">5층</div>
-						</div>
-						<div class="panel panel-info">
-							<div class="panel-heading">
-								<h3 class="panel-title">문제5. 휴지는 몇 미터 일까요?</h3>
-							</div>
-							<div class="panel-body">5M</div>
-						</div>
-					</div>
-					<!-- /.col-sm-4 -->
-					<div class="col-sm-4">
-						<div class="panel panel-warning">
-							<div class="panel-heading">
-								<h3 class="panel-title">문제3. 안병래님은 몇살일까요?</h3>
-							</div>
-							<div class="panel-body">29세</div>
-						</div>
-					</div>
-					<!-- /.col-sm-4 -->
-				</div>
-
-				<!-- 문제별 정답 -->
-				<h2 class="sub-header">문제별 투표율</h2>
-
-				문제1
-				<div class="progress">
-					<div class="progress-bar progress-bar-success progress-bar-striped" id=q1num1per
-						 width: 0%">
-						<span id=q1num1>송재일 - </span>
-					</div>
-					<div class="progress-bar progress-bar-warning progress-bar-striped" id=q1num2per
-						 width: 0%">
-						<span id=q1num2>남환우 - </span>
-					</div>
-					<div class="progress-bar progress-bar-danger progress-bar-striped" id=q1num3per
-						 width: 0%">
-						<span id=q1num3>안병래 - </span>
-					</div>
-					<div class="progress-bar progress-bar-info progress-bar-striped" id=q1num4per
-						 width: 0%">
-						<span id=q1num4>이상현 - </span>
-					</div>
-				</div>
-				<br><br> 
 				
-				문제2
-				<div class="progress">
-					<div class="progress-bar progress-bar-success progress-bar-striped" id=q2num1per
-						 width: 0%">
-						<span id=q2num1>2층 - </span>
-					</div>
-					<div class="progress-bar progress-bar-warning progress-bar-striped" id=q2num2per
-						 width: 0%">
-						<span id=q2num2>3층 - </span>
-					</div>
-					<div class="progress-bar progress-bar-danger progress-bar-striped" id=q2num3per
-						 width: 0%">
-						<span id=q2num3>12층- </span>
-					</div>
-					<div class="progress-bar progress-bar-info progress-bar-striped" id=q2num4per
-						 width: 0%">
-						<span id=q2num4>5층 - </span>
-					</div>
-				</div>
-				<br><br> 
-				
-				문제3
-				<div class="progress">
-					<div class="progress-bar progress-bar-success progress-bar-striped" id=q3num1per
-						 width: 0%">
-						<span id=q3num1>29세 - </span>
-					</div>
-					<div class="progress-bar progress-bar-warning progress-bar-striped" id=q3num2per
-						 width: 0%">
-						<span id=q3num2>31세 - </span>
-					</div>
-					<div class="progress-bar progress-bar-danger progress-bar-striped" id=q3num3per
-						 width: 0%">
-						<span id=q3num3>25세 - </span>
-					</div>
-					<div class="progress-bar progress-bar-info progress-bar-striped" id=q3num4per
-						 width: 0%">
-						<span id=q3num4>32세 - </span>
-					</div>
-				</div>
-				<br><br>
-				
-				문제4
-				<div class="progress">
-					<div class="progress-bar progress-bar-success progress-bar-striped" id=q4num1per
-						 width: 0%">
-						<span id=q4num1>CPU - </span>
-					</div>
-					<div class="progress-bar progress-bar-warning progress-bar-striped" id=q4num2per
-						 width: 0%">
-						<span id=q4num2>HDD - </span>
-					</div>
-					<div class="progress-bar progress-bar-danger progress-bar-striped" id=q4num3per
-						 width: 0%">
-						<span id=q4num3>PSD - </span>
-					</div>
-					<div class="progress-bar progress-bar-info progress-bar-striped" id=q4num4per
-						 width: 0%">
-						<span id=q4num4>Memory - </span>
-					</div>
-				</div>
-				<br><br>
-				
-				문제5
-				<div class="progress">
-					<div class="progress-bar progress-bar-success progress-bar-striped" id=q5num1per
-						 width: 0%">
-						<span id=q5num1>3M - </span>
-					</div>
-					<div class="progress-bar progress-bar-warning progress-bar-striped" id=q5num2per
-						 width: 0%">
-						<span id=q5num2>5M - </span>
-					</div>
-					<div class="progress-bar progress-bar-danger progress-bar-striped" id=q5num3per
-						 width: 0%">
-						<span id=q5num3>14M - </span>
-					</div>
-					<div class="progress-bar progress-bar-info progress-bar-striped" id=q5num4per
-						 width: 0%">
-						<span id=q5num4>20M - </span>
-					</div>
-				</div>
-				<br><br>
-								
 
 
 			</div>
@@ -302,10 +303,8 @@
 
 <script type="text/javascript">
 	var table = $('#boardTable');
-	//아이피
-	//var ip = '10.131.158.23:8080/voteproject';
-	//var ip = 'lempqa.ldcc.co.kr/license';
-	var ip = '221.167.194.186:8080/vote'
+	//var ip = '221.167.194.186:8080/vote'
+	var ip = 'localhost:8080/vote'
 	var imgname;
 
 	$.ajax('http://' + ip + '/voteresult.do', {
@@ -339,9 +338,9 @@
 			try {
 				for ( var i in rows) {
 					var rank = parseInt(i) + 1;
-					var image = document.getElementById('rank' + rank + 'img');
+					//var image = document.getElementById('rank' + rank + 'img');
 					imgname = rows[i].name;
-					image.src = "img/" + imgname + ".jpg";
+					//image.src = "img/" + imgname + ".jpg";
 					$('#rank' + rank + 'name').append(imgname);
 				}
 			} catch (exception) {} 
@@ -352,9 +351,9 @@
 					rows[0] = rows[i];
 				}
 			}
-			var image = document.getElementById('fasterimg');
+			//var image = document.getElementById('fasterimg');
 			imgname = rows[0].name;
-			image.src = "img/" + imgname + ".jpg";
+			//image.src = "img/" + imgname + ".jpg";
 			$('#fastername').append(imgname);
 			
 		},
@@ -451,6 +450,18 @@
 			alert('작업을 완료할 수 없습니다.\n' + '잠시 후 다시 시도하세요.\n');
 		}
 	});
+	
+	//데이터 삭제
+	function deletedata() {
+		$.ajax('http://' + ip + '/deletedata.do', {
+			method : 'GET',
+			dataType : 'json',
+			success : function(result) {
+			},
+			error : function(xhr, textStatus, errorThrown) {
+			}
+		});
+	}
 	
 </script>
 

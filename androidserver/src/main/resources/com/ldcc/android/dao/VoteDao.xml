@@ -43,6 +43,14 @@ delaysum ASC;
 		,#{correct});
 	</insert>
 	
+	
+	<!-- 글 삭제 -->
+	<delete id="deletedata">
+		DELETE
+		FROM vote;
+	</delete>
+	
+	
 	<!-- 통계 가져오기 (문제1) -->
 	 <select id="selectCal1" resultType="ResultVo">
 	    SELECT question,

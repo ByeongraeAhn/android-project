@@ -29,6 +29,7 @@ public class TestController {
 	@Autowired
 	VoteDao voteDao;
 	
+	//검증
 	@RequestMapping(value = "/validation", method = RequestMethod.GET)
 	public Object validation(
 			@RequestParam String name)
@@ -64,11 +65,11 @@ public class TestController {
 			@RequestParam String name)
 			throws UnsupportedEncodingException {
 
-		// 1번 - 2
-		// 2번 - 4
-		// 3번 - 1
-		// 4번 - 3
-		// 5번 - 2
+		// 1번 - 4
+		// 2번 - 1
+		// 3번 - 3
+		// 4번 - 2
+		// 5번 - 3
 		
 		//클라이언트 IP확인
 		HttpServletRequest req = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
@@ -94,30 +95,30 @@ public class TestController {
 		int correct = 0;
 		switch (question) {
 		case 1:
-			if (selected == 2) {
-				correct = 1;
-			}
-			break;
-
-		case 2:
 			if (selected == 4) {
 				correct = 1;
 			}
 			break;
 
-		case 3:
+		case 2:
 			if (selected == 1) {
 				correct = 1;
 			}
 			break;
 
-		case 4:
+		case 3:
 			if (selected == 3) {
 				correct = 1;
 			}
 			break;
-		case 5:
+
+		case 4:
 			if (selected == 2) {
+				correct = 1;
+			}
+			break;
+		case 5:
+			if (selected == 3) {
 				correct = 1;
 			}
 			break;
@@ -174,97 +175,102 @@ public class TestController {
 		
 		ResultVo list;
 
-		//문제1(보기4개)
-		list = voteDao.selectCal1();
-		int a1 = list.getQ1num1();
-		int b1 = list.getQ1num2();
-		int c1 = list.getQ1num3();
-		int d1 = list.getQ1num4();
 		
-		List<Integer> listper1 = new ArrayList<Integer>();
-		listper1.add((int) (a1 / (float) (a1 + b1 + c1 + d1) * 100));
-		listper1.add((int) (b1 / (float) (a1 + b1 + c1 + d1) * 100));
-		listper1.add((int) (c1 / (float) (a1 + b1 + c1 + d1) * 100));
-		listper1.add((int) (d1 / (float) (a1 + b1 + c1 + d1) * 100));
-		listper1.add(a1);
-		listper1.add(b1);
-		listper1.add(c1);
-		listper1.add(d1);
-		
-		//문제2(보기4개)
-		list = voteDao.selectCal2();
-		int a2 = list.getQ1num1();
-		int b2 = list.getQ1num2();
-		int c2 = list.getQ1num3();
-		int d2 = list.getQ1num4();
+		//데이터 없을 경우의 예외처리 
+		try {
+			//문제1(보기4개)
+			list = voteDao.selectCal1();
+			int a1 = list.getQ1num1();
+			int b1 = list.getQ1num2();
+			int c1 = list.getQ1num3();
+			int d1 = list.getQ1num4();
+			
+			List<Integer> listper1 = new ArrayList<Integer>();
+			listper1.add((int) (a1 / (float) (a1 + b1 + c1 + d1) * 100));
+			listper1.add((int) (b1 / (float) (a1 + b1 + c1 + d1) * 100));
+			listper1.add((int) (c1 / (float) (a1 + b1 + c1 + d1) * 100));
+			listper1.add((int) (d1 / (float) (a1 + b1 + c1 + d1) * 100));
+			listper1.add(a1);
+			listper1.add(b1);
+			listper1.add(c1);
+			listper1.add(d1);
+			
+			//문제2(보기4개)
+			list = voteDao.selectCal2();
+			int a2 = list.getQ1num1();
+			int b2 = list.getQ1num2();
+			int c2 = list.getQ1num3();
+			int d2 = list.getQ1num4();
 
-		List<Integer> listper2 = new ArrayList<Integer>();
-		listper2.add((int) (a2 / (float) (a2 + b2 + c2 + d2) * 100));
-		listper2.add((int) (b2 / (float) (a2 + b2 + c2 + d2) * 100));
-		listper2.add((int) (c2 / (float) (a2 + b2 + c2 + d2) * 100));
-		listper2.add((int) (d2 / (float) (a2 + b2 + c2 + d2) * 100));
-		listper2.add(a2);
-		listper2.add(b2);
-		listper2.add(c2);
-		listper2.add(d2);
-		
-		//문제3(보기4개)
-		list = voteDao.selectCal3();
-		int a3 = list.getQ1num1();
-		int b3 = list.getQ1num2();
-		int c3 = list.getQ1num3();
-		int d3 = list.getQ1num4();
+			List<Integer> listper2 = new ArrayList<Integer>();
+			listper2.add((int) (a2 / (float) (a2 + b2 + c2 + d2) * 100));
+			listper2.add((int) (b2 / (float) (a2 + b2 + c2 + d2) * 100));
+			listper2.add((int) (c2 / (float) (a2 + b2 + c2 + d2) * 100));
+			listper2.add((int) (d2 / (float) (a2 + b2 + c2 + d2) * 100));
+			listper2.add(a2);
+			listper2.add(b2);
+			listper2.add(c2);
+			listper2.add(d2);
+			
+			//문제3(보기4개)
+			list = voteDao.selectCal3();
+			int a3 = list.getQ1num1();
+			int b3 = list.getQ1num2();
+			int c3 = list.getQ1num3();
+			int d3 = list.getQ1num4();
 
-		List<Integer> listper3 = new ArrayList<Integer>();
-		listper3.add((int) (a3 / (float) (a3 + b3 + c3 + d3) * 100));
-		listper3.add((int) (b3 / (float) (a3 + b3 + c3 + d3) * 100));
-		listper3.add((int) (c3 / (float) (a3 + b3 + c3 + d3) * 100));
-		listper3.add((int) (d3 / (float) (a3 + b3 + c3 + d3) * 100));
-		listper3.add(a3);
-		listper3.add(b3);
-		listper3.add(c3);
-		listper3.add(d3);
-		
-		//문제4(보기4개)
-		list = voteDao.selectCal4();
-		int a4 = list.getQ1num1();
-		int b4 = list.getQ1num2();
-		int c4 = list.getQ1num3();
-		int d4 = list.getQ1num4();
-		
-		List<Integer> listper4 = new ArrayList<Integer>();
-		listper4.add((int) (a4 / (float) (a4 + b4 + c4 + d4) * 100));
-		listper4.add((int) (b4 / (float) (a4 + b4 + c4 + d4) * 100));
-		listper4.add((int) (c4 / (float) (a4 + b4 + c4 + d4) * 100));
-		listper4.add((int) (d4 / (float) (a4 + b4 + c4 + d4) * 100));
-		listper4.add(a4);
-		listper4.add(b4);
-		listper4.add(c4);
-		listper4.add(d4);
-		
-		//문제5(보기4개)
-		list = voteDao.selectCal5();
-		int a5 = list.getQ1num1();
-		int b5 = list.getQ1num2();
-		int c5 = list.getQ1num3();
-		int d5 = list.getQ1num4();
-		
-		List<Integer> listper5 = new ArrayList<Integer>();
-		listper5.add((int) (a5 / (float) (a5 + b5 + c5 + d5) * 100));
-		listper5.add((int) (b5 / (float) (a5 + b5 + c5 + d5) * 100));
-		listper5.add((int) (c5 / (float) (a5 + b5 + c5 + d5) * 100));
-		listper5.add((int) (d5 / (float) (a5 + b5 + c5 + d5) * 100));
-		listper5.add(a5);
-		listper5.add(b5);
-		listper5.add(c5);
-		listper5.add(d5);
-		
-		
-		responseData.put("listper1", listper1);
-		responseData.put("listper2", listper2);
-		responseData.put("listper3", listper3);
-		responseData.put("listper4", listper4);
-		responseData.put("listper5", listper5);
+			List<Integer> listper3 = new ArrayList<Integer>();
+			listper3.add((int) (a3 / (float) (a3 + b3 + c3 + d3) * 100));
+			listper3.add((int) (b3 / (float) (a3 + b3 + c3 + d3) * 100));
+			listper3.add((int) (c3 / (float) (a3 + b3 + c3 + d3) * 100));
+			listper3.add((int) (d3 / (float) (a3 + b3 + c3 + d3) * 100));
+			listper3.add(a3);
+			listper3.add(b3);
+			listper3.add(c3);
+			listper3.add(d3);
+			
+			//문제4(보기4개)
+			list = voteDao.selectCal4();
+			int a4 = list.getQ1num1();
+			int b4 = list.getQ1num2();
+			int c4 = list.getQ1num3();
+			int d4 = list.getQ1num4();
+			
+			List<Integer> listper4 = new ArrayList<Integer>();
+			listper4.add((int) (a4 / (float) (a4 + b4 + c4 + d4) * 100));
+			listper4.add((int) (b4 / (float) (a4 + b4 + c4 + d4) * 100));
+			listper4.add((int) (c4 / (float) (a4 + b4 + c4 + d4) * 100));
+			listper4.add((int) (d4 / (float) (a4 + b4 + c4 + d4) * 100));
+			listper4.add(a4);
+			listper4.add(b4);
+			listper4.add(c4);
+			listper4.add(d4);
+			
+			//문제5(보기4개)
+			list = voteDao.selectCal5();
+			int a5 = list.getQ1num1();
+			int b5 = list.getQ1num2();
+			int c5 = list.getQ1num3();
+			int d5 = list.getQ1num4();
+			
+			List<Integer> listper5 = new ArrayList<Integer>();
+			listper5.add((int) (a5 / (float) (a5 + b5 + c5 + d5) * 100));
+			listper5.add((int) (b5 / (float) (a5 + b5 + c5 + d5) * 100));
+			listper5.add((int) (c5 / (float) (a5 + b5 + c5 + d5) * 100));
+			listper5.add((int) (d5 / (float) (a5 + b5 + c5 + d5) * 100));
+			listper5.add(a5);
+			listper5.add(b5);
+			listper5.add(c5);
+			listper5.add(d5);
+			
+			
+			responseData.put("listper1", listper1);
+			responseData.put("listper2", listper2);
+			responseData.put("listper3", listper3);
+			responseData.put("listper4", listper4);
+			responseData.put("listper5", listper5);
+		} catch (Exception e) {
+		}
 
 		return responseData;
 	}
@@ -290,6 +296,19 @@ public class TestController {
 			return responseData;
 
 		}
+	}
+	
+	//데이터 삭제
+	@RequestMapping(value = "/deletedata", method = RequestMethod.GET)
+	public Object deletedata() {
+		//데이터삭제
+		voteDao.deletedata();
+		
+		
+		HashMap<String, Object> responseData = new HashMap<String, Object>();
+		responseData.put("status", "success");
+		return responseData;
+
 	}
 
 }
