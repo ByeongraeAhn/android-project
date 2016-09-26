@@ -47,7 +47,7 @@
 
 				<div>
 					<!-- <input type="submit" value="Submit" /> -->
-					<input type="button" value="투표완료" onclick="send()" />
+					<input type="button" value="정답제출" onclick="send()" />
 				</div>
 				
 			</div>
@@ -57,7 +57,8 @@
 <script type="text/javascript" charset="utf-8">
 	// 아이피
 	//var ip = '221.167.194.186:8080/vote'
-	var ip = 'localhost:8080/vote'
+	//var ip = 'localhost:8080/vote'
+	var ip = 'lempqa.ldcc.co.kr:8080/vote'
 
 	//카운트다운
 	var countdown = $("#countdown").countdown360({
@@ -87,9 +88,9 @@
 	//로그인 페이지로 부터 이름 받기
 	var getname = location.href.substr(location.href.lastIndexOf('=') + 1);
 	
-	//이름 세글자 검증하기(세글자는 27)
-	if (getname.length != 27) {
-   		alert('이름을 세글자로 정확히 입력해 주세요');
+	//이름 7글자 이상이면 검증한다.
+	if (getname.length >= 63) {
+   		alert('이름을 정확히 입력해 주세요');
    		location.replace('login.html')
    	}
 	

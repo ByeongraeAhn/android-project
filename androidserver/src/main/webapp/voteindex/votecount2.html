@@ -36,7 +36,7 @@
 					<h4>문제2. 구글 회장이 언급한 2003년까지의 생성된 데이터의 양은?</h4>
 
 					<input type="radio" name="choice" value="1" checked="checked" />
-					15엑사바이트 <label></label> <br>
+					5엑사바이트 <label></label> <br>
 					<input type="radio"	name="choice" value="2" /> 
 					5페타바이트 <label></label> <br>
 					<input type="radio" name="choice" value="3" />
@@ -47,7 +47,7 @@
 
 				<div>
 					<!-- <input type="submit" value="Submit" /> -->
-					<input type="button" value="투표완료" onclick="send()" />
+					<input type="button" value="정답제출" onclick="send()" />
 				</div>
 				
 			</div>
@@ -57,7 +57,8 @@
 	<script type="text/javascript" charset="utf-8">
 		// 아이피
 		//var ip = '221.167.194.186:8080/vote'
-		var ip = 'localhost:8080/vote'
+		//var ip = 'localhost:8080/vote'
+		var ip = 'lempqa.ldcc.co.kr:8080/vote'
 
 		//카운트다운
 		var countdown = $("#countdown").countdown360({
